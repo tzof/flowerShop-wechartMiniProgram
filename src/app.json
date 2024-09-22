@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/category",
+    "pages/cart/cart",
+    "pages/my/my"
+  ],
+  "window": {
+    "navigationBarTitleText": "花城",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#f3514f",
+    "enablePullDownRefresh": true,
+    "backgroundColorTop": "#ccc"
+  },
+  "tabBar": {
+    "color": "#252933",
+    "selectedColor": "#FF734C",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/index.png",
+        "selectedIconPath": "assets/index-active.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "assets/cate.png",
+        "selectedIconPath": "assets/cate-active.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "assets/cart.png",
+        "selectedIconPath": "assets/cart-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "assets/my.png",
+        "selectedIconPath": "assets/my-active.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-image": "@vant/weapp/image/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-field": "@vant/weapp/field/index"
+  },
+  "subPackages": [
+    {
+      "root": "packageMy",
+      "name": "my",
+      "pages": [
+        "setUserInfo/setUserInfo"
+      ]
+    }
+  ],
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

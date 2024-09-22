@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@vant/weapp": "^1.11.6",
+    "axios": "^0.18.1",
+    "axios-miniprogram-adapter": "^0.3.5",
+    "mobx-miniprogram": "^6.12.3",
+    "mobx-miniprogram-bindings": "^4.0.0"
+  }
+}

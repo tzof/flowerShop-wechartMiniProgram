@@ -1,0 +1,17 @@
+<!--packageMy/setUserInfo/setUserInfo.wxml-->
+<van-cell value="修改" is-link center custom-class="custom-class">
+  <view slot="title" class="titleClass">
+    <view class="van-cell-text">头像</view>
+    <van-image src="{{avatarUrl}}" bind:tap="onTapLogin" round width="140rpx" height="140rpx" use-error-slot>
+      <van-image src="http://assets.tzof.net/flower/cat.jpeg" slot="error" round width="140rpx" height="140rpx" />
+    </van-image>
+    <van-button class="avatar" open-type="chooseAvatar" bindchooseavatar="onTapAvatarUrl"></van-button>
+  </view>
+</van-cell>
+<van-cell bind:click="onClickNickname" center class="nicknameCell" custom-class="custom-class">
+  <view slot="title" class="titleClass">
+    <view class="van-cell-text">昵称</view>
+    <van-field value="{{nickname || '默认用户名'}}" type="nickname" placeholder="请输入用户名" border="{{ false }}" input-align="left" name="myInput" bindblur="onBlurNickname" clearable />
+  </view>
+</van-cell>
+<van-button type="info" bind:tap="onTapSetUserInfo" round size="large" class="saveBtn">保存</van-button>

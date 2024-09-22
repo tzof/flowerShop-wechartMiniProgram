@@ -6,7 +6,15 @@
     "ignore": [],
     "include": []
   },
+  "miniprogramRoot": "src/",
   "setting": {
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./src"
+      }
+    ],
     "useCompilerPlugins": [
       "less"
     ],
@@ -16,7 +24,6 @@
     "minified": true,
     "enhance": true,
     "showShadowRootInWxmlPanel": true,
-    "packNpmRelationList": [],
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -27,5 +34,6 @@
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
-  }
+  },
+  "srcMiniprogramRoot": "src/"
 }

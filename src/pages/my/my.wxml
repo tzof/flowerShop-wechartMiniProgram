@@ -1,0 +1,7 @@
+<!--pages/my/my.wxml-->
+<view class="my">
+  <view class="bg">
+    <image src="/assets/banner.jpg" mode=""/>
+  </view>
+  <login />
+</view>

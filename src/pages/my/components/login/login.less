@@ -1,0 +1,35 @@
+/* pages/my/components/login/login.wxss */
+.login {
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin-top: 300rpx;
+  display: flex;
+  & > view {
+    margin-left: 30rpx;
+  }
+  .noLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text {
+      color: rgb(160, 160, 160);
+    }
+    button {
+      border: none;
+      &::before {
+        opacity: 0 !important;
+      }
+    }
+  }
+  .isLogin {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .settingUserInfo {
+      color: rgb(160, 160, 160);
+    }
+  }
+}

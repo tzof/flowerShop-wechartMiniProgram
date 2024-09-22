@@ -1,0 +1,17 @@
+<!--pages/my/components/login/login.wxml-->
+<view class="login">
+  <van-image src="{{avatarUrl}}" bind:tap="onTapLogin" round width="140rpx" height="140rpx" use-error-slot>
+    <van-image src="http://assets.tzof.net/flower/cat.jpeg" slot="error" round width="140rpx" height="140rpx" />
+  </van-image>
+  <view class="noLogin" wx:if="{{!openId}}" bind:tap="onTapLogin">
+    <text>未登录</text>
+    <van-button plain round hover-class="hover-class">点击登录</van-button>
+  </view>
+  <view class="isLogin" wx:else="">
+    <text>{{nickname || '默认用户名'}}</text>
+    <view class="settingUserInfo" bind:tap="onTapSettingUserInfo">
+      <text>设置</text>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+</view>
