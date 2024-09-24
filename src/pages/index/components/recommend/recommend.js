@@ -24,7 +24,7 @@ Component({
    */
   data: {
     pageNum: 1,
-    pageSize: 10,
+    pageSize: 9,
     list: [],
   },
   observers: {
@@ -55,7 +55,7 @@ Component({
         this.setData({
           list: [...this.data.list, ...res.data]
         })
-        this.triggerEvent("isPage", false)
+        // this.triggerEvent("isPage", false)
       })
     },
   },

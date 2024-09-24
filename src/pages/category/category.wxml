@@ -1,2 +1,14 @@
 <!--pages/category/category.wxml-->
-<text>pages/category/category.wxml</text>
+<view class="category">
+  <view class="aside">
+    <view wx:for="{{sidebarList}}" wx:key="category_id" bind:tap="onChangeAside" data-item="{{item}}" data-index="{{index}}" class="{{index == changeIndex ? 'change' : ''}}">
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+  <view class="list">
+    <view class="list-box" wx:for="{{list}}" wx:key="parent_category_id">
+      <image src="{{item.url}}" mode="" />
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+</view>
