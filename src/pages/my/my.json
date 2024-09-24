@@ -2,8 +2,8 @@
   "navigationStyle": "custom",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "login": "/pages/my/components/login/login",
-    "order": "/pages/my/components/order/order",
-    "support": "/pages/my/components/support/support"
+    "login": "./components/login/login",
+    "order": "./components/order/order",
+    "support": "./components/support/support"
   }
 }

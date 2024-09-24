@@ -1,4 +1,5 @@
 {
   "usingComponents": {
+    "swiper": "./components/swiper/swiper"
   }
 }

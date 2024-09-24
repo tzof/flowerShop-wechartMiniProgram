@@ -36,7 +36,7 @@ Page({
   },
   onTapSetUserInfo() {
     console.log('按钮被点击');
-    setTimeout(() => {
+    setTimeout(async () => {
       const {
         avatarUrl,
         avatarfileName,
@@ -50,7 +50,7 @@ Page({
         nickname,
       }
       console.log(params);
-      setUserinfo(params).then(res => {
+      await setUserinfo(params).then(res => {
         console.log(res);
         wx.showLoading({
           title: '保存中',

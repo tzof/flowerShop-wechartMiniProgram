@@ -61,6 +61,9 @@
       ]
     }
   ],
+  "resolveAlias": {
+    "@/*": "/*"
+  },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
 }
