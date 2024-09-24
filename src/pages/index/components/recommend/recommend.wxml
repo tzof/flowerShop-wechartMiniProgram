@@ -1,0 +1,24 @@
+<!--pages/index/components/recommend/recommend.wxml-->
+<view class="recommend">
+  <text class="recommend-title">猜你喜欢</text>
+  <view class="recommend-list">
+    <view class="recommend-goods" wx:for="{{list}}" wx:key="goodsId">
+      <image src="{{item.url}}" class="goods-image" mode="" />
+      <view class="goods-info">
+        <text class="info-name">{{item.name}}</text>
+        <text class="info-floralLanguage">{{item.floralLanguage}}</text>
+      </view>
+      <view class="goods-bottom">
+        <view class="prick-box">
+          <text class="original_price">￥{{item.original_price}}</text>
+          <text class="discounted_price">￥{{item.discounted_price}}</text>
+        </view>
+        <image src="/assets/buybtn.png" mode="" />
+      </view>
+    </view>
+  </view>
+  <view class="recommend-loading">
+    <van-loading type="spinner" />
+    <text>加载中</text>
+  </view>
+</view>

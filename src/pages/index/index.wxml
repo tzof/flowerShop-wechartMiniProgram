@@ -1,2 +1,8 @@
 <!--index.wxml-->
-<swiper wx:if="{{avatarUrl}}" />
+<view wx:if="{{avatarUrl}}" class="index">
+  <view class="bg"></view>
+  <swiperC />
+  <navC />
+  <activity />
+  <recommend isReachBottom="{{isReachBottom}}" bind:isPage="isPageThen"/>
+</view>

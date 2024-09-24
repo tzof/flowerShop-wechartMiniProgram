@@ -1,5 +1,9 @@
 {
   "usingComponents": {
-    "swiper": "./components/swiper/swiper"
-  }
+    "swiperC": "./components/swiper/swiper",
+    "navC": "./components/nav/nav",
+    "activity": "./components/activity/activity",
+    "recommend": "./components/recommend/recommend"
+  },
+  "onReachBottomDistance": 10
 }

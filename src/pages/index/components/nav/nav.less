@@ -1,0 +1,33 @@
+/* pages/index/components/nav/nav.wxss */
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding-bottom: 20rpx;
+  &-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 20%;
+    margin-top: 20rpx;
+    image {
+      width: 66rpx;
+      height: 66rpx;
+    }
+    text {
+      margin-top: 4px;
+      font-size: 12px;
+    }
+    // 在:nth伪类中 这种表达式使用了公式来选择特定的元素
+    // -n+5 表示选择倒数第5个及之后的所有元素
+    // -n+5：表示从5开始递减的整数序列（5, 4, 3, 2, 1, 0, -1, -2, ...）。
+    &:nth-last-of-type(-n + 5) {
+      image {
+        width: 50rpx;
+        height: 50rpx;
+      }
+    }
+  }
+}

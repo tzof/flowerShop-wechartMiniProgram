@@ -1,0 +1,10 @@
+<!--pages/index/components/activity/activity.wxml-->
+<view class="activity">
+  <view class="left">
+    <image src="{{list[0].url}}" mode=""/>
+  </view>
+  <view class="right">
+    <image src="{{list[1].url}}" mode=""/>
+    <image src="{{list[2].url}}" mode=""/>
+  </view>
+</view>

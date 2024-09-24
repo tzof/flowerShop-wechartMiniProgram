@@ -1,6 +1,6 @@
-// pages/index/components/swiper.js
+// pages/index/components/activity/activity.js
 import {
-  getCarousel,
+  getActivity,
 } from '@/fetch/home'
 Component({
 
@@ -22,18 +22,18 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    getCarouselData() {
-      return getCarousel().then(res => {
+    getActivityData() {
+      return getActivity().then(res => {
         console.log(res);
         this.setData({
           list: res.data
         })
       })
-    },
+    }
   },
   lifetimes: {
     ready() {
-      this.getCarouselData();
+      this.getActivityData();
     },
   },
 })

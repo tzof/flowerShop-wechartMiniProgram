@@ -1,6 +1,6 @@
 <!--pages/index/components/swiper.wxml-->
 <view class="swiper">
-  <swiper autoplay circular indicator-dots="true" interval="2000" indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="#FF734C" easing-function="easeInOutCubic">
+  <swiper interval="2000" autoplay circular indicator-dots="true" indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="#FF734C" easing-function="easeInOutCubic">
     <swiper-item wx:for="{{list}}" wx:key="*this">
       <image src="{{item.url}}" mode="" show-menu-by-longpress="true" />
     </swiper-item>

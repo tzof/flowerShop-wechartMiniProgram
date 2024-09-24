@@ -1,6 +1,6 @@
-// pages/index/components/swiper.js
+// pages/index/components/nav/nav.js
 import {
-  getCarousel,
+  getNav,
 } from '@/fetch/home'
 Component({
 
@@ -22,8 +22,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    getCarouselData() {
-      return getCarousel().then(res => {
+    getNavData() {
+      return getNav().then(res => {
         console.log(res);
         this.setData({
           list: res.data
@@ -33,7 +33,7 @@ Component({
   },
   lifetimes: {
     ready() {
-      this.getCarouselData();
+      this.getNavData();
     },
   },
 })

@@ -1,0 +1,7 @@
+<!--pages/index/components/nav/nav.wxml-->
+<view class="nav">
+  <view wx:for="{{list}}" wx:key="*this" class="nav-box">
+    <image src="{{item.url}}" mode="" />
+    <text>{{item.name}}</text>
+  </view>
+</view>

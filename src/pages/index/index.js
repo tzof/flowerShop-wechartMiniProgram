@@ -8,6 +8,14 @@ Page({
   behaviors: [loginBehavi],
   data: {
     storeBindings: {},
+    isReachBottom: false,
+  },
+  // recommend传来的
+  isPageThen(event) {
+    // console.log(event.detail);
+    this.setData({
+      isReachBottom: event.detail
+    })
   },
   onLoad() {
     this.data.storeBindings = createStoreBindings(this, {
@@ -24,5 +32,13 @@ Page({
   },
   onUnload() {
     this.data.storeBindings.destroyStoreBindings();
+  },
+  // 上拉触底
+  // app.json或page.json中通过onReachBottomDistance配置触发距离，默认50(px)
+  onReachBottom() {
+    console.log('我触底了');
+    this.setData({
+      isReachBottom: true,
+    })
   },
 })
