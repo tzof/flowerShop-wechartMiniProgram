@@ -10,10 +10,10 @@
       </view>
       <view class="goods-bottom">
         <view class="prick-box">
-          <text class="original_price">￥{{item.original_price}}</text>
           <text class="discounted_price">￥{{item.discounted_price}}</text>
+          <text class="original_price">￥{{item.original_price}}</text>
         </view>
-        <image src="/assets/buybtn.png" mode="" />
+        <image src="/assets/buybtn.png" mode="" class="shoppingCart" bind:tap="onTapShoppingCart" data-item="{{item}}" />
       </view>
     </view>
   </view>

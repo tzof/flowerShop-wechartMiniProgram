@@ -5,4 +5,5 @@
   <navC />
   <activity />
   <recommend isReachBottom="{{isReachBottom}}" bind:isPage="isPageThen"/>
+  <float />
 </view>

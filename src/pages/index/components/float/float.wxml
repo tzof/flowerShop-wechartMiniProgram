@@ -1,0 +1,9 @@
+<!--pages/index/components/float/float.wxml-->
+<view class="float">
+  <view class="shoppingCart" bind:tap="onTapFloatShoppingCart">
+    <van-icon name="shopping-cart-o" custom-class="icon-calss" />
+    <view class="dot">
+      <text>{{total}}</text>
+    </view>
+  </view>
+</view>

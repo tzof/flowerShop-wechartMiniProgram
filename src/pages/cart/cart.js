@@ -1,32 +1,144 @@
 // pages/cart/cart.js
+import {
+  createStoreBindings
+} from 'mobx-miniprogram-bindings'
+import userStores from '@/stores/user'
+import {
+  getShoppingCart,
+  setShoppingCart,
+  deleteShoppingCart,
+  setShoppingCartSelect,
+  setShoppingCartAllSelect
+} from '@/fetch/shoppingCart'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list: [],
+    storeBindings: {},
+    totalPrices: 0,
+    isAllSelect: false
   },
-
+  getShoppingCartData() {
+    const openId = this.data.openId;
+    console.log(openId);
+    getShoppingCart({
+      openId
+    }).then(res => {
+      console.log(res);
+      const totalPrices = res.data.reduce((sum, item) => sum + item.totalPrices, 0).toFixed(2)
+      const isSelectArr = res.data.filter(item => item.isSelect);
+      this.setData({
+        list: res.data,
+        totalPrices,
+        isAllSelect: isSelectArr.length == res.data.length ? true : false
+      })
+    })
+  },
+  onChangeCardCheckbox(event) {
+    const isSelect = event.detail;
+    const carId = event.currentTarget.dataset.carid;
+    const params = {
+      carId,
+      isSelect
+    }
+    setShoppingCartSelect(params).then(res => {
+      console.log(res);
+      this.getShoppingCartData();
+    })
+  },
+  onChangeAllCheckbox(event) {
+    const isSelect = event.detail;
+    const openId = this.data.openId;
+    const params = {
+      openId,
+      isSelect,
+    }
+    setShoppingCartAllSelect(params).then(res => {
+      console.log(res);
+      this.setData({
+        isAllSelect: isSelect
+      })
+      this.getShoppingCartData();
+    })
+  },
+  onChangeCount(event) {
+    const count = event.detail;
+    const openId = this.data.openId;
+    const goodsId = event.currentTarget.dataset.goodsid;
+    const params = {
+      openId,
+      goodsId,
+      count
+    }
+    setShoppingCart(params).then(res => {
+      console.log(res);
+      this.getShoppingCartData();
+      // const dataPath = `list[${changeIndex}]`
+      // this.setData({
+      //   [dataPath]: changeData
+      // })
+    })
+  },
+  deleteShoppingCart(carId) {
+    wx.showModal({
+      title: '提示',
+      content: '确定删除该商品吗？',
+      confirmColor: 'red',
+      success: (res) => {
+        console.log(res);
+        const params = {
+          carId
+        }
+        deleteShoppingCart(params).then(res => {
+          console.log(res);
+          wx.showToast({
+            title: '删除成功',
+            duration: 500
+          })
+          this.getShoppingCartData();
+        })
+      },
+      fail: (err) => {
+        console.log(err);
+      },
+    })
+  },
+  onBindDisableMinus(event) {
+    const carId = event.currentTarget.dataset.carid;
+    this.deleteShoppingCart(carId)
+  },
+  onDeleteShoppingCart(event) {
+    const carId = event.currentTarget.dataset.carid;
+    this.deleteShoppingCart(carId)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.data.storeBindings = createStoreBindings(this, {
+      store: userStores,
+      fields: ['openId'],
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    this.getShoppingCartData();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    const openId = this.data.openId;
+    if (openId) {
+      this.getShoppingCartData();
+    }
   },
 
   /**
@@ -40,7 +152,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    this.data.storeBindings.destroyStoreBindings();
   },
 
   /**

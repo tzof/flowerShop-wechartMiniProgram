@@ -1,0 +1,48 @@
+/* pages/index/components/float/float.wxss */
+.float {
+  position: fixed;
+  bottom: 160rpx;
+  right: 0;
+  transform: translate(50%, 0);
+  transition: all 0.2s linear;
+
+  &:hover {
+    transform: translate(0, 0);
+  }
+
+  .shoppingCart {
+    width: 80rpx;
+    height: 80rpx;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .icon-calss {
+      font-size: 54rpx !important;
+      color: rgb(255, 130, 100);
+    }
+
+    .dot {
+      width: 40rpx;
+      height: 40rpx;
+      background-color: red;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -20rpx;
+      left: 0;
+      opacity: 0.8;
+      text {
+        font-size: 20rpx;
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,7 +1,16 @@
 // pages/index/components/recommend/recommend.js
 import {
+  createStoreBindings
+} from 'mobx-miniprogram-bindings'
+import userStores from '@/stores/user'
+import shoppingCartStore from '@/stores/shoppingCart'
+import {
   getGoods,
 } from '@/fetch/goods'
+import {
+  setShoppingCart,
+  getShoppingCartTotal
+} from '@/fetch/shoppingCart'
 Component({
 
   /**
@@ -24,8 +33,10 @@ Component({
    */
   data: {
     pageNum: 1,
-    pageSize: 9,
+    pageSize: 10,
     list: [],
+    storeBindings: {},
+    storeBindingsShoppingCart: {},
   },
   observers: {
 
@@ -55,13 +66,51 @@ Component({
         this.setData({
           list: [...this.data.list, ...res.data]
         })
-        // this.triggerEvent("isPage", false)
+        this.triggerEvent("isPage", false)
+      })
+    },
+    onTapShoppingCart(event) {
+      const {
+        item
+      } = event.currentTarget.dataset;
+      console.log(item);
+      const openId = this.data.openId;
+      const params = {
+        openId,
+        goodsId: item.goodsId,
+        count: 1
+      }
+      console.log(params);
+      setShoppingCart(params).then(res => {
+        console.log(res);
+        getShoppingCartTotal({
+          openId
+        }).then(res => {
+          console.log(res);
+          const {
+            total
+          } = res.data;
+          this.setTotal(total)
+        })
       })
     },
   },
   lifetimes: {
+    created() {
+      this.data.storeBindings = createStoreBindings(this, {
+        store: userStores,
+        fields: ['openId'],
+      })
+      this.data.storeBindingsShoppingCart = createStoreBindings(this, {
+        store: shoppingCartStore,
+        actions: ['setTotal'],
+      });
+    },
     ready() {
       this.getGoodsData();
     },
+    detached() {
+      this.data.storeBindings.destroyStoreBindings();
+    }
   },
 })
