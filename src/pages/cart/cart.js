@@ -22,11 +22,7 @@ Page({
     isAllSelect: false
   },
   getShoppingCartData() {
-    const openId = this.data.openId;
-    console.log(openId);
-    getShoppingCart({
-      openId
-    }).then(res => {
+    getShoppingCart().then(res => {
       console.log(res);
       const totalPrices = res.data.reduce((sum, item) => sum + item.totalPrices, 0).toFixed(2)
       const isSelectArr = res.data.filter(item => item.isSelect);
@@ -51,9 +47,7 @@ Page({
   },
   onChangeAllCheckbox(event) {
     const isSelect = event.detail;
-    const openId = this.data.openId;
     const params = {
-      openId,
       isSelect,
     }
     setShoppingCartAllSelect(params).then(res => {
@@ -66,10 +60,8 @@ Page({
   },
   onChangeCount(event) {
     const count = event.detail;
-    const openId = this.data.openId;
     const goodsId = event.currentTarget.dataset.goodsid;
     const params = {
-      openId,
       goodsId,
       count
     }

@@ -37,7 +37,7 @@ Component({
     async created() {
       this.data.storeBindings = await createStoreBindings(this, {
         store: userStores,
-        fields: ['token', 'openId', 'userInfo'],
+        fields: ['openId', 'userInfo'],
         actions: ['setToken', 'setOpenId', 'setUserInfo', 'clearUser'],
       })
     },
@@ -56,7 +56,7 @@ Component({
   pageLifetimes: {
     show: function () {
       console.log('页面显示');
-      const openId = wx.getStorageSync('openId')
+      const openId = this.data.openId;
       if (openId && this.data.flag) {
         console.log('我进入了my里login组件的show');
         this.getUserinfoData();

@@ -37,14 +37,12 @@ const behavi = Behavior({
                 } = res;
                 this.setToken(token);
                 this.setOpenId(openId);
-                console.log(openId, this.data.openId);
                 wx.showToast({
                   title: '登录成功',
                   duration: 500,
                 })
                 wx.setStorageSync('token', token);
                 wx.setStorageSync('openId', openId);
-                console.log(token, openId);
                 await this.getUserinfoData();
                 resolveLogin();
               }).catch(err => {
@@ -63,10 +61,7 @@ const behavi = Behavior({
       })
     },
     getUserinfoData() {
-      const openId = wx.getStorageSync('openId')
-      return getUserinfo({
-        openId
-      }).then(res => {
+      return getUserinfo().then(res => {
         console.log(res);
         const {
           avatarUrl,

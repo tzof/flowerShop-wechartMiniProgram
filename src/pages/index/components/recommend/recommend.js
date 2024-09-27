@@ -2,7 +2,6 @@
 import {
   createStoreBindings
 } from 'mobx-miniprogram-bindings'
-import userStores from '@/stores/user'
 import shoppingCartStore from '@/stores/shoppingCart'
 import {
   getGoods,
@@ -36,7 +35,6 @@ Component({
     pageSize: 10,
     list: [],
     storeBindings: {},
-    storeBindingsShoppingCart: {},
   },
   observers: {
 
@@ -74,18 +72,14 @@ Component({
         item
       } = event.currentTarget.dataset;
       console.log(item);
-      const openId = this.data.openId;
       const params = {
-        openId,
         goodsId: item.goodsId,
         count: 1
       }
       console.log(params);
       setShoppingCart(params).then(res => {
         console.log(res);
-        getShoppingCartTotal({
-          openId
-        }).then(res => {
+        getShoppingCartTotal().then(res => {
           console.log(res);
           const {
             total
@@ -98,10 +92,6 @@ Component({
   lifetimes: {
     created() {
       this.data.storeBindings = createStoreBindings(this, {
-        store: userStores,
-        fields: ['openId'],
-      })
-      this.data.storeBindingsShoppingCart = createStoreBindings(this, {
         store: shoppingCartStore,
         actions: ['setTotal'],
       });

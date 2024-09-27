@@ -3,7 +3,6 @@ import {
   createStoreBindings
 } from 'mobx-miniprogram-bindings'
 import shoppingCartStore from '@/stores/shoppingCart'
-import userStores from '@/stores/user'
 import {
   getShoppingCartTotal
 } from '@/fetch/shoppingCart'
@@ -21,7 +20,6 @@ Component({
    */
   data: {
     storeBindings: {},
-    storeBindingsUser: {},
   },
 
   /**
@@ -29,10 +27,7 @@ Component({
    */
   methods: {
     getShoppingCartTotalData() {
-      const openId = this.data.openId;
-      getShoppingCartTotal({
-        openId
-      }).then(res => {
+      getShoppingCartTotal().then(res => {
         const {
           total
         } = res.data;
@@ -52,10 +47,6 @@ Component({
         fields: ['total'],
         actions: ['setTotal'],
       });
-      this.data.storeBindingsUser = createStoreBindings(this, {
-        store: userStores,
-        fields: ['openId'],
-      });
     },
     attached() {},
     ready() {
@@ -63,7 +54,6 @@ Component({
     },
     detached() {
       this.data.storeBindings.destroyStoreBindings();
-      this.data.storeBindingsUser.destroyStoreBindings();
     },
   },
   pageLifetimes: {

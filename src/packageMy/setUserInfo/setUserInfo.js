@@ -42,9 +42,7 @@ Page({
         avatarfileName,
         nickname,
       } = this.data
-      const openId = wx.getStorageSync('openId')
       let params = {
-        openId,
         avatarUrl,
         avatarfileName,
         nickname,
@@ -82,8 +80,7 @@ Page({
   onLoad(options) {
     this.data.storeBindings = createStoreBindings(this, {
       store: userStores,
-      fields: ['token', 'openId', 'userInfo'],
-      actions: ['setToken', 'setOpenId', 'setUserInfo'],
+      fields: ['userInfo'],
     });
   },
 
@@ -96,7 +93,6 @@ Page({
       avatarUrl: this.data.userInfo.avatarUrl,
       avatarfileName: this.data.userInfo.avatarfileName
     })
-    console.log(this.data.openId);
   },
 
   /**

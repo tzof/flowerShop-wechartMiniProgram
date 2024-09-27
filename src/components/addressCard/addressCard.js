@@ -5,10 +5,6 @@ import {
   addAddress,
   setAddress
 } from '@/fetch/address'
-import {
-  createStoreBindings
-} from 'mobx-miniprogram-bindings'
-import userStores from '@/stores/user'
 Component({
   options: {
     // styleIsolatio，默认情况下开启样式隔离isolated  
@@ -41,20 +37,14 @@ Component({
    */
   methods: {
     getDefaultAddressData() {
-      const openId = this.data.openId;
-      getDefaultAddress({
-        openId
-      }).then(res => {
+      getDefaultAddress().then(res => {
         this.setData({
           list: [res.data]
         })
       })
     },
     getAddressData() {
-      const openId = this.data.openId;
-      getAddress({
-        openId
-      }).then(res => {
+      getAddress().then(res => {
         this.setData({
           list: res.data
         })
@@ -62,12 +52,7 @@ Component({
     },
   },
   lifetimes: {
-    created() {
-      this.data.storeBindings = createStoreBindings(this, {
-        store: userStores,
-        fields: ['openId'],
-      });
-    },
+    created() {},
     attached() {},
     ready() {
       if (this.data.isDefault) {

@@ -20,12 +20,11 @@ Page({
   onLoad() {
     this.data.storeBindings = createStoreBindings(this, {
       store: userStores,
-      fields: ['token', 'openId', 'userInfo'],
+      fields: ['userInfo'],
       actions: ['setToken', 'setOpenId', 'setUserInfo', 'clearUser'],
     })
   },
   onReady() {
-    console.log('我准备好了');
     if (this.data.userInfo && Object.keys(this.data.userInfo).length === 0) {
       this.onTapLogin();
     }
