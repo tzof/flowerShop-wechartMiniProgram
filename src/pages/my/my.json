@@ -3,6 +3,7 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "login": "./components/login/login",
+    "addressM": "./components/address/address",
     "order": "./components/order/order",
     "support": "./components/support/support"
   }

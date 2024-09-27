@@ -1,0 +1,94 @@
+/* components/addressCard/addressCard.wxss */
+.addressCard {
+  .addressCard-box {
+    display: flex;
+    flex-direction: column;
+
+
+    .recipients-info {
+      display: flex;
+      align-items: center;
+
+      &>text {
+        font-weight: bold;
+        margin-right: 20rpx;
+      }
+
+      .tag {
+        width: 56rpx;
+        height: 30rpx;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ee0a24;
+        border-radius: 6rpx;
+        box-sizing: border-box;
+
+        text {
+          color: #ee0a24;
+          font-size: 22rpx;
+        }
+      }
+    }
+
+    .address-info {
+      margin-top: 10rpx;
+
+      text {
+        white-space: nowrap;
+        margin-right: 20rpx;
+        text-align: justify;
+        font-size: 26rpx;
+
+        &:last-of-type {
+          white-space: pre-wrap;
+        }
+      }
+    }
+
+    .operate-box {
+      margin-top: 20rpx;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .default-checkbox {
+        .checkbox-icon {
+          width: 26rpx;
+          height: 26rpx;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+          border: 1px solid #5d5d5d;
+          border-radius: 5rpx;
+          font-size: 22rpx;
+          color: #424242;
+        }
+
+        .label-class {
+          padding: 0;
+          padding-left: 10rpx;
+        }
+
+        .checkbox-label {
+          font-size: 26rpx;
+          color: #5d5d5d;
+          padding-left: 0;
+        }
+
+      }
+
+      .btn {
+        button {
+          width: 100rpx;
+          height: 46rpx;
+          font-size: 22rpx;
+          margin-left: 20rpx;
+          background-color: #f6f6f6;
+          border: none;
+        }
+      }
+    }
+  }
+}

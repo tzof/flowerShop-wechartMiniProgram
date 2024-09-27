@@ -4,4 +4,5 @@
     <image src="/assets/banner.jpg" mode=""/>
   </view>
   <login />
+  <addressM />
 </view>

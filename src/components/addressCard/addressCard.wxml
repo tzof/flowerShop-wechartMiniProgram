@@ -1,0 +1,33 @@
+<!--components/addressCard/addressCard.wxml-->
+<view class="addressCard">
+  <view class="addressCard-box" wx:for="{{list}}" wx:key="addressId">
+    <view class="recipients-info">
+      <text class="recipients">{{item.recipients}}</text>
+      <text class="phone">{{item.phone}}</text>
+      <view class="tag" wx:if="{{item.is_default}}">
+        <text>默认</text>
+      </view>
+    </view>
+    <view class="address-info">
+      <text>{{item.province}}</text>
+      <text>{{item.city}}</text>
+      <text>{{item.county}}</text>
+      <text class="full">{{item.full_address}}</text>
+    </view>
+    <view class="operate-box">
+      <view class="default-checkbox">
+        <van-checkbox value="{{ item.is_default }}" shape="square" use-icon-slot name="{{item.addressId}}" bind:change="onChange" label-class="label-class">
+          <view class="checkbox-icon" slot="icon">
+            <van-icon name="success" wx:if="{{ item.is_default }}" />
+          </view>
+          <text class="checkbox-label">{{item.is_default ? '已默认' : '设为默认'}}</text>
+        </van-checkbox>
+      </view>
+      <view class="btn">
+        <van-button round>删除</van-button>
+        <van-button round>修改</van-button>
+      </view>
+    </view>
+    <!-- <van-divider custom-style="margin: 20rpx 0" /> -->
+  </view>
+</view>

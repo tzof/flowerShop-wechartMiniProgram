@@ -17,8 +17,7 @@
     "selectedColor": "#FF734C",
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "assets/index.png",
@@ -55,17 +54,18 @@
     "van-swipe-cell": "@vant/weapp/swipe-cell/index",
     "van-checkbox": "@vant/weapp/checkbox/index",
     "van-checkbox-group": "@vant/weapp/checkbox-group/index",
-    "van-stepper": "@vant/weapp/stepper/index"
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-tag": "@vant/weapp/tag/index"
   },
-  "subPackages": [
-    {
-      "root": "packageMy",
-      "name": "my",
-      "pages": [
-        "setUserInfo/setUserInfo"
-      ]
-    }
-  ],
+  "subPackages": [{
+    "root": "packageMy",
+    "name": "my",
+    "pages": [
+      "setUserInfo/setUserInfo",
+      "setAddress/setAddress"
+    ]
+  }],
   "resolveAlias": {
     "@/*": "/*"
   },

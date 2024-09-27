@@ -1,0 +1,14 @@
+<!--pages/my/components/address/address.wxml-->
+<view class="address">
+  <view class="setting">
+    <text class="label">地址管理</text>
+    <view>
+      <text>查看更多</text>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <van-divider custom-style="margin: 20rpx 0" />
+  <!-- <scroll-view 	scroll-y> -->
+  <addressCard isDefault="{{1}}" />
+  <!-- </scroll-view> -->
+</view>
