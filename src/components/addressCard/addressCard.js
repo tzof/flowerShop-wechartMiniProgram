@@ -2,8 +2,8 @@
 import {
   getDefaultAddress,
   getAddress,
-  addAddress,
-  setAddress
+  setDefaultAddress,
+  deleteAddress
 } from '@/fetch/address'
 Component({
   options: {
@@ -49,6 +49,56 @@ Component({
           list: res.data
         })
       })
+    },
+    onChangeCheckbox(event) {
+      const {
+        addressid
+      } = event.currentTarget.dataset;
+      const is_default = event.detail;
+      const params = {
+        addressId: addressid,
+        is_default
+      }
+      setDefaultAddress(params).then(async res => {
+        console.log(res);
+        await this.getAddressData();
+        wx.showToast({
+          title: '已设为默认地址',
+          duration: 500,
+        })
+      })
+    },
+    onTapDelete(event) {
+      const {
+        addressid
+      } = event.currentTarget.dataset;
+      console.log(addressid);
+      wx.showModal({
+        title: '提示',
+        content: '确定删除该地址吗？',
+        confirmColor: 'red',
+        success: (res) => {
+          console.log(res);
+          deleteAddress({
+            addressId: addressid
+          }).then(async res => {
+            console.log(res);
+            await this.getAddressData();
+            wx.showToast({
+              title: '删除地址成功',
+              duration: 500,
+            })
+          })
+        },
+        fail: (err) => {
+          console.log(err);
+        },
+      })
+    },
+    onTapUpdate(event) {
+      const {
+        addressid
+      } = event.currentTarget.dataset;
     },
   },
   lifetimes: {

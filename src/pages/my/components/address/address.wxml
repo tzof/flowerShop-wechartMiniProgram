@@ -1,6 +1,6 @@
 <!--pages/my/components/address/address.wxml-->
 <view class="address">
-  <view class="setting">
+  <view class="setting" bind:tap="onTapAddressSetting">
     <text class="label">地址管理</text>
     <view>
       <text>查看更多</text>

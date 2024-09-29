@@ -16,7 +16,7 @@
     </view>
     <view class="operate-box">
       <view class="default-checkbox">
-        <van-checkbox value="{{ item.is_default }}" shape="square" use-icon-slot name="{{item.addressId}}" bind:change="onChange" label-class="label-class">
+        <van-checkbox value="{{ item.is_default }}" shape="square" use-icon-slot bind:change="onChangeCheckbox" label-class="label-class" data-addressId="{{item.addressId}}" disabled="{{isDefault ? true : false}}">
           <view class="checkbox-icon" slot="icon">
             <van-icon name="success" wx:if="{{ item.is_default }}" />
           </view>
@@ -24,8 +24,8 @@
         </van-checkbox>
       </view>
       <view class="btn">
-        <van-button round>删除</van-button>
-        <van-button round>修改</van-button>
+        <van-button round wx:if="{{isDefault ? false : true}}" bind:tap="onTapDelete" data-addressId="{{item.addressId}}">删除</van-button>
+        <van-button round bind:tap="onTapUpdate" data-addressId="{{item.addressId}}">修改</van-button>
       </view>
     </view>
     <!-- <van-divider custom-style="margin: 20rpx 0" /> -->

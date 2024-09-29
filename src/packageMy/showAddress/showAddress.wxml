@@ -1,0 +1,7 @@
+<!--packageMy/showAddress/showAddress.wxml-->
+<view class="showAddress">
+  <addressCard />
+  <view class="add">
+    <van-button size="large" round>新增地址</van-button>
+  </view>
+</view>

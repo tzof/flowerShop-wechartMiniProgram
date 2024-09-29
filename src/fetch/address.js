@@ -17,3 +17,11 @@ export const addAddress = (params) => {
 export const setAddress = (params) => {
   return axiosWx('POST', '/getAddress', params);
 };
+
+export const setDefaultAddress = (params) => {
+  return axiosWx('POST', '/setDefaultAddress', params);
+};
+
+export const deleteAddress = (params) => {
+  return axiosWx('POST', '/deleteAddress', params);
+};

@@ -32,6 +32,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onTapAddressSetting(){
+      wx.navigateTo({
+        url: '/packageMy/showAddress/showAddress',
+      })
+    },
   }
 })

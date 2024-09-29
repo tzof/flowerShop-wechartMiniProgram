@@ -63,6 +63,7 @@
     "name": "my",
     "pages": [
       "setUserInfo/setUserInfo",
+      "showAddress/showAddress",
       "setAddress/setAddress"
     ]
   }],

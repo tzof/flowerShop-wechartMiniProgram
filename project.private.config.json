@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "packageMy/showAddress/showAddress",
+          "pathName": "packageMy/showAddress/showAddress",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/cart/cart",
           "pathName": "pages/cart/cart",
           "query": "",
