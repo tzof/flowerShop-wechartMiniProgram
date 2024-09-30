@@ -1,2 +1,35 @@
 <!--packageGoods/goodsInfo/goodsInfo.wxml-->
-<text>packageGoods/goodsInfo/goodsInfo.wxml</text>
+<view class="goodsInfo">
+  <image src="{{info.url}}" mode="" class="bg" />
+  <view class="text-info">
+    <view class="price-box">
+      <text class="discounted_price">￥{{info.discounted_price}}</text>
+      <text class="original_price">￥{{info.original_price}}</text>
+    </view>
+    <view class="name-box">
+      <text class="name">{{info.name}}</text>
+      <text class="floralLanguage">{{info.floralLanguage}}</text>
+    </view>
+    <view class="specification-box">
+      <text>原料：{{info.material}}</text>
+      <text>包装：{{info.packing}}</text>
+    </view>
+  </view>
+  <view class="img-info">
+    <image src="{{info.url}}" mode="" />
+    <image src="http://assets.tzof.net/flower/info-1.png" mode="" />
+    <image src="http://assets.tzof.net/flower/info-2.png" mode="" />
+    <image src="http://assets.tzof.net/flower/info-3.png" mode="" />
+    <image src="http://assets.tzof.net/flower/info-4.png" mode="" />
+    <image src="http://assets.tzof.net/flower/info-5.png" mode="" />
+  </view>
+  <view class="operation">
+    <van-goods-action>
+      <van-goods-action-icon icon="wap-home-o" text="首页" bind:click="onClickHome" />
+      <van-goods-action-icon icon="cart-o" text="购物车" info="{{cartTotal?cartTotal:''}}" bind:click="onClickCart" />
+      <van-goods-action-icon icon="chat-o" text="客服" open-type="contact" />
+      <van-goods-action-button text="加入购物车" type="warning" bind:click="onClickAddCart" data-goodsId="{{info.goodsId}}" />
+      <van-goods-action-button text="立即购买" bind:click="onClickBuy" />
+    </van-goods-action>
+  </view>
+</view>

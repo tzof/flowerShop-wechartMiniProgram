@@ -1,5 +1,5 @@
 <!--pages/index/components/activity/activity.wxml-->
-<view class="activity">
+<view class="activity" bind:tap="onTapActivity">
   <view class="left">
     <image src="{{list[0].url}}" mode=""/>
   </view>

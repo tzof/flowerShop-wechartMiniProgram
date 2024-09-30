@@ -17,7 +17,6 @@ Component({
   data: {
     list: [],
   },
-
   /**
    * 组件的方法列表
    */
@@ -29,7 +28,12 @@ Component({
           list: res.data
         })
       })
-    }
+    },
+    onTapActivity() {
+      wx.navigateTo({
+        url: '/packageGoods/goodsList/goodsList'
+      })
+    },
   },
   lifetimes: {
     ready() {

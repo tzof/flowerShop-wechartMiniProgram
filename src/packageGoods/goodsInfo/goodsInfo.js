@@ -1,18 +1,74 @@
 // packageGoods/goodsInfo/goodsInfo.js
+import {
+  getGoodsDetail
+} from "@/fetch/goods"
+import {
+  getShoppingCartTotal,
+  setShoppingCart
+} from "@/fetch/shoppingCart"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    goodsId: null,
+    info: null,
+    cartTotal: 0,
   },
-
+  getGoodsDetailData() {
+    getGoodsDetail({
+      goodsId: this.data.goodsId
+    }).then(res => {
+      console.log(res);
+      this.setData({
+        info: res.data
+      })
+    })
+  },
+  getShoppingCartTotalData() {
+    getShoppingCartTotal().then(res => {
+      console.log(res);
+      this.setData({
+        cartTotal: res.data.total
+      })
+    })
+  },
+  onClickHome() {
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
+  },
+  onClickCart() {
+    wx.switchTab({
+      url: '/pages/cart/cart',
+    })
+  },
+  onClickAddCart(event) {
+    const goodsId = event.currentTarget.dataset.goodsid;
+    const params = {
+      goodsId: goodsId,
+      count: 1
+    }
+    setShoppingCart(params).then(res => {
+      console.log(res);
+      this.getShoppingCartTotalData()
+    })
+  },
+  onClickBuy() {},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    console.log(options);
+    const {
+      goodsId
+    } = options;
+    this.setData({
+      goodsId
+    })
+    this.getGoodsDetailData()
+    this.getShoppingCartTotalData()
   },
 
   /**

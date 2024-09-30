@@ -93,12 +93,10 @@ Component({
       const {
         item
       } = event.currentTarget.dataset;
-      console.log(item);
       const params = {
         goodsId: item.goodsId,
         count: 1
       }
-      console.log(params);
       setShoppingCart(params).then(res => {
         console.log(res);
         getShoppingCartTotal().then(res => {
@@ -108,6 +106,12 @@ Component({
           } = res.data;
           this.setTotal(total)
         })
+      })
+    },
+    onTapGoods(event) {
+      const goodsId = event.currentTarget.dataset.goodsid;
+      wx.navigateTo({
+        url: '/packageGoods/goodsInfo/goodsInfo?goodsId=' + goodsId,
       })
     },
   },

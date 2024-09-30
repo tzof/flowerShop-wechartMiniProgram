@@ -106,6 +106,12 @@ Page({
     const carId = event.currentTarget.dataset.carid;
     this.deleteShoppingCart(carId)
   },
+  onTapGoods(event) {
+    const goodsId = event.currentTarget.dataset.goodsid;
+    wx.navigateTo({
+      url: '/packageGoods/goodsInfo/goodsInfo?goodsId=' + goodsId,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
