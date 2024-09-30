@@ -45,6 +45,7 @@ Component({
     },
     getAddressData() {
       getAddress().then(res => {
+        console.log(res);
         this.setData({
           list: res.data
         })
@@ -79,16 +80,18 @@ Component({
         confirmColor: 'red',
         success: (res) => {
           console.log(res);
-          deleteAddress({
-            addressId: addressid
-          }).then(async res => {
-            console.log(res);
-            await this.getAddressData();
-            wx.showToast({
-              title: '删除地址成功',
-              duration: 500,
+          if (res.confirm) {
+            deleteAddress({
+              addressId: addressid
+            }).then(async res => {
+              console.log(res);
+              await this.getAddressData();
+              wx.showToast({
+                title: '删除地址成功',
+                duration: 500,
+              })
             })
-          })
+          }
         },
         fail: (err) => {
           console.log(err);
