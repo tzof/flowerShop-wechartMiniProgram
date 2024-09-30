@@ -10,7 +10,7 @@ Page({
     storeBindings: {},
     isReachBottom: false,
   },
-  // recommend传来的
+  // goodsCard传来的
   isPageThen(event) {
     // console.log(event.detail);
     this.setData({

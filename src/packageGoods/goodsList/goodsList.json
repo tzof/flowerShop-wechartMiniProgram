@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "goodsCard": "/components/goodsCard/goodsCard",
+    "float": "/components/float/float"
+  }
 }

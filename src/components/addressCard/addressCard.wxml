@@ -1,5 +1,5 @@
 <!--components/addressCard/addressCard.wxml-->
-<view class="addressCard">
+<view class="addressCard" wx:if="{{list.length > 0}}">
   <view class="addressCard-box" wx:for="{{list}}" wx:key="addressId">
     <view class="recipients-info">
       <text class="recipients">{{item.recipients}}</text>
@@ -31,3 +31,4 @@
     <!-- <van-divider custom-style="margin: 20rpx 0" /> -->
   </view>
 </view>
+<van-empty description="{{isDefault ? '暂无默认地址' : '暂无数据'}}" wx:else="" />

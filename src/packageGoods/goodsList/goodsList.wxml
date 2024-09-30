@@ -1,2 +1,5 @@
 <!--packageGoods/goodsList/goodsList.wxml-->
-<text>packageGoods/goodsList/goodsList.wxml</text>
+<view class="goodsList">
+  <goodsCard category_ids="{{category_ids}}" isReachBottom="{{isReachBottom}}" bind:isPage="isPageThen"/>
+  <float />
+</view>

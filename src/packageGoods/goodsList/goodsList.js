@@ -5,14 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isReachBottom: false,
+    category_ids: null,
   },
-
+  isPageThen(event) {
+    // console.log(event.detail);
+    this.setData({
+      isReachBottom: event.detail
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    const category_ids = options.category_id;
+    this.setData({
+      category_ids
+    })
   },
 
   /**
@@ -54,7 +63,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    console.log('我触底了');
+    this.setData({
+      isReachBottom: true,
+    })
   },
 
   /**

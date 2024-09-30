@@ -3,11 +3,7 @@
     "pages/index/index",
     "pages/category/category",
     "pages/cart/cart",
-    "pages/my/my",
-    "packageGoods/goodsList",
-    "packageGoods/goodInfo/goodInfo",
-    "packageGoods/goodsList/goodsList",
-    "packageGoods/goodsInfo/goodsInfo"
+    "pages/my/my"
   ],
   "window": {
     "navigationBarTitleText": "花城",
@@ -61,7 +57,8 @@
     "van-checkbox-group": "@vant/weapp/checkbox-group/index",
     "van-stepper": "@vant/weapp/stepper/index",
     "van-divider": "@vant/weapp/divider/index",
-    "van-tag": "@vant/weapp/tag/index"
+    "van-tag": "@vant/weapp/tag/index",
+    "van-empty": "@vant/weapp/empty/index"
   },
   "subPackages": [
     {
@@ -71,6 +68,14 @@
         "setUserInfo/setUserInfo",
         "showAddress/showAddress",
         "setAddress/setAddress"
+      ]
+    },
+    {
+      "root": "packageGoods",
+      "name": "goods",
+      "pages": [
+        "goodsInfo/goodsInfo",
+        "goodsList/goodsList"
       ]
     }
   ],

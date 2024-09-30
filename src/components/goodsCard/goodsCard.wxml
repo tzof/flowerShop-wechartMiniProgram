@@ -1,8 +1,7 @@
-<!--pages/index/components/recommend/recommend.wxml-->
-<view class="recommend">
-  <text class="recommend-title">猜你喜欢</text>
-  <view class="recommend-list">
-    <view class="recommend-goods" wx:for="{{list}}" wx:key="goodsId">
+<!--components/goodsCard/goodsCard.wxml-->
+<view class="goodsCard" wx:if="{{list.length > 0}}">
+  <view class="goodsCard-list">
+    <view class="goodsCard-goods" wx:for="{{list}}" wx:key="goodsId">
       <image src="{{item.url}}" class="goods-image" mode="" />
       <view class="goods-info">
         <text class="info-name">{{item.name}}</text>
@@ -17,8 +16,9 @@
       </view>
     </view>
   </view>
-  <view class="recommend-loading">
-    <van-loading type="spinner" />
-    <text>加载中</text>
+  <view class="goodsCard-loading">
+    <van-loading type="spinner" wx:if="{{!isEnd}}"/>
+    <text>{{isEnd ? '已经到底啦' : '加载中'}}</text>
   </view>
 </view>
+<van-empty description="暂无数据" wx:else="" />

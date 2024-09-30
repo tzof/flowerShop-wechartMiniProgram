@@ -6,7 +6,7 @@
     </view>
   </view>
   <view class="list">
-    <view class="list-box" wx:for="{{list}}" wx:key="parent_category_id">
+    <view class="list-box" wx:for="{{list}}" wx:key="parent_category_id" bind:tap="onTapCategory" data-name="{{item.name}}" data-category_id="{{item.category_id}}">
       <image src="{{item.url}}" mode="" />
       <text>{{item.name}}</text>
     </view>

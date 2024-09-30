@@ -1,4 +1,3 @@
-// pages/index/components/recommend/recommend.js
 import {
   createStoreBindings
 } from 'mobx-miniprogram-bindings'
@@ -16,6 +15,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    category_ids: {
+      type: String,
+      value: null,
+    },
     isReachBottom: { // 全写
       type: Boolean, // 类型
       value: false, // 默认值
@@ -31,6 +34,8 @@ Component({
    * 组件的初始数据
    */
   data: {
+    timer: null,
+    isEnd: false,
     pageNum: 1,
     pageSize: 10,
     list: [],
@@ -44,7 +49,9 @@ Component({
    */
   methods: {
     getGoodsData() {
-      return getGoods().then(res => {
+      getGoods({
+        category_ids: this.data.category_ids
+      }).then(res => {
         console.log(res);
         this.setData({
           list: res.data
@@ -52,19 +59,34 @@ Component({
       })
     },
     pageGoodsData() {
+      // 加个节流预防频繁翻页和翻页大于总数的问题
+      if (this.data.timer) {
+        return
+      }
       this.setData({
         pageNum: this.data.pageNum + 1,
+        timer: true
       })
       const pageNum = this.data.pageNum;
       const pageSize = this.data.pageSize;
-      return getGoods({
+      getGoods({
         pageNum,
-        pageSize
+        pageSize,
+        category_ids: this.data.category_ids
       }).then(res => {
         this.setData({
           list: [...this.data.list, ...res.data]
         })
-        this.triggerEvent("isPage", false)
+        this.triggerEvent("isPage", false);
+        if (res.total > this.data.list.length) {
+          this.setData({
+            timer: false,
+          })
+        } else {
+          this.setData({
+            isEnd: true
+          })
+        }
       })
     },
     onTapShoppingCart(event) {

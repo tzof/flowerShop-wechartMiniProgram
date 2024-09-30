@@ -39,7 +39,7 @@ Component({
     getDefaultAddressData() {
       getDefaultAddress().then(res => {
         this.setData({
-          list: [res.data]
+          list: res.data ? [res.data] : null
         })
       })
     },

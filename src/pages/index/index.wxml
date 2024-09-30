@@ -4,6 +4,9 @@
   <swiperC />
   <navC />
   <activity />
-  <recommend isReachBottom="{{isReachBottom}}" bind:isPage="isPageThen"/>
+  <view class="goods">
+    <text class="goods-title">猜你喜欢</text>
+    <goodsCard isReachBottom="{{isReachBottom}}" bind:isPage="isPageThen" />
+  </view>
   <float />
 </view>

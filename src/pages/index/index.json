@@ -3,8 +3,8 @@
     "swiperC": "./components/swiper/swiper",
     "navC": "./components/nav/nav",
     "activity": "./components/activity/activity",
-    "recommend": "./components/recommend/recommend",
-    "float": "./components/float/float"
+    "goodsCard": "/components/goodsCard/goodsCard",
+    "float": "/components/float/float"
   },
   "onReachBottomDistance": 10
 }

@@ -1,7 +1,7 @@
 // pages/index/components/nav/nav.js
 import {
-  getNav,
-} from '@/fetch/home'
+  getCategory,
+} from '@/fetch/category'
 Component({
 
   /**
@@ -22,18 +22,26 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    getNavData() {
-      return getNav().then(res => {
+    getCategoryData() {
+      getCategory().then(res => {
         console.log(res);
         this.setData({
           list: res.data
         })
       })
     },
+    onTapCategory(event) {
+      const {
+        category_id
+      } = event.currentTarget.dataset
+      wx.navigateTo({
+        url: '/packageGoods/goodsList/goodsList?category_id=' + category_id,
+      })
+    },
   },
   lifetimes: {
     ready() {
-      this.getNavData();
+      this.getCategoryData();
     },
   },
 })

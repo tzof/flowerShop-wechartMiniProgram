@@ -1,6 +1,6 @@
 <!--pages/index/components/nav/nav.wxml-->
 <view class="nav">
-  <view wx:for="{{list}}" wx:key="*this" class="nav-box">
+  <view wx:for="{{list}}" wx:key="*this" class="nav-box" bind:tap="onTapCategory" data-category_id="{{item.category_id}}">
     <image src="{{item.url}}" mode="" />
     <text>{{item.name}}</text>
   </view>
