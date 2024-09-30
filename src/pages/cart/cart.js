@@ -81,17 +81,19 @@ Page({
       confirmColor: 'red',
       success: (res) => {
         console.log(res);
-        const params = {
-          carId
-        }
-        deleteShoppingCart(params).then(res => {
-          console.log(res);
-          wx.showToast({
-            title: '删除成功',
-            duration: 500
+        if (res.confirm) {
+          const params = {
+            carId
+          }
+          deleteShoppingCart(params).then(res => {
+            console.log(res);
+            wx.showToast({
+              title: '删除成功',
+              duration: 500
+            })
+            this.getShoppingCartData();
           })
-          this.getShoppingCartData();
-        })
+        }
       },
       fail: (err) => {
         console.log(err);

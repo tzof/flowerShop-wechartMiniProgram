@@ -1,15 +1,15 @@
 <!--pages/cart/cart.wxml-->
 <view class="cart">
   <van-swipe-cell wx:for="{{list}}" wx:key="carId" class="goods-box" right-width="{{ 60 }}">
-    <view class="goods-card" bind:tap="onTapGoods" data-goodsId="{{item.goodsId}}">
+    <view class="goods-card">
       <view class="goods-card-checkbox">
         <van-checkbox value="{{ item.isSelect }}" checked-color="#f3514f" catch:change="onChangeCardCheckbox" data-carid="{{item.carId}}" />
       </view>
-      <view class="goods-card-img">
+      <view class="goods-card-img" bind:tap="onTapGoods" data-goodsId="{{item.goodsId}}">
         <image src="{{item.goodsInfo.url}}" mode="" />
       </view>
       <view class="goods-card-rightbox">
-        <view class="goods-card-rightbox-top">
+        <view class="goods-card-rightbox-top" bind:tap="onTapGoods" data-goodsId="{{item.goodsId}}">
           <text class="name">{{item.goodsInfo.name}}</text>
           <text class="floralLanguage">{{item.goodsInfo.floralLanguage}}</text>
         </view>
@@ -18,7 +18,7 @@
             <text>￥{{item.goodsInfo.discounted_price}}</text>
           </view>
           <view class="count">
-            <van-stepper min="0" value="{{ item.count }}" integer minus-class="{{item.count === 1 ? ' disable' : 'minus-class'}}" disable-minus="{{item.count === 1 ? true : false}}" catch:change="onChangeCount" catch:overlimit="onBindDisableMinus" data-carid="{{item.carId}}" data-goodsid="{{item.goodsId}}" />
+            <van-stepper min="1" value="{{ item.count }}" integer minus-class="{{item.count === 1 ? ' disable' : 'minus-class'}}" disable-minus="{{item.count === 1 ? true : false}}" bind:change="onChangeCount" bind:overlimit="onBindDisableMinus" data-carid="{{item.carId}}" data-goodsid="{{item.goodsId}}" />
           </view>
         </view>
       </view>
