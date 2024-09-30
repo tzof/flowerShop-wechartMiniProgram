@@ -99,6 +99,17 @@ Component({
       const {
         addressid
       } = event.currentTarget.dataset;
+      wx.navigateTo({
+        url: `/packageMy/setAddress/setAddress?addressId=${addressid}`,
+        events: {
+          idSuccess: (res) => {
+            console.log(res);
+          }
+        },
+        success: (res) => {
+          res.eventChannel.emit('addressId', addressid)
+        },
+      })
     },
   },
   lifetimes: {
@@ -114,6 +125,12 @@ Component({
     detached() {},
   },
   pageLifetimes: {
-    show() {},
+    show() {
+      if (this.data.isDefault) {
+        this.getDefaultAddressData();
+      } else {
+        this.getAddressData();
+      }
+    },
   },
 })

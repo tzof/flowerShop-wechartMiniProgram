@@ -1,4 +1,4 @@
-// packageMy/showAddress/showAddress.js
+// packageGoods/goodsList/goodsList.js
 Page({
 
   /**
@@ -7,11 +7,7 @@ Page({
   data: {
 
   },
-  onTapAddAddress(){
-    wx.navigateTo({
-      url: '/packageMy/setAddress/setAddress',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

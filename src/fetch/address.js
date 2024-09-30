@@ -15,7 +15,7 @@ export const addAddress = (params) => {
 };
 
 export const setAddress = (params) => {
-  return axiosWx('POST', '/getAddress', params);
+  return axiosWx('POST', '/setAddress', params);
 };
 
 export const setDefaultAddress = (params) => {

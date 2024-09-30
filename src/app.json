@@ -3,7 +3,11 @@
     "pages/index/index",
     "pages/category/category",
     "pages/cart/cart",
-    "pages/my/my"
+    "pages/my/my",
+    "packageGoods/goodsList",
+    "packageGoods/goodInfo/goodInfo",
+    "packageGoods/goodsList/goodsList",
+    "packageGoods/goodsInfo/goodsInfo"
   ],
   "window": {
     "navigationBarTitleText": "花城",
@@ -17,7 +21,8 @@
     "selectedColor": "#FF734C",
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "assets/index.png",
@@ -58,18 +63,23 @@
     "van-divider": "@vant/weapp/divider/index",
     "van-tag": "@vant/weapp/tag/index"
   },
-  "subPackages": [{
-    "root": "packageMy",
-    "name": "my",
-    "pages": [
-      "setUserInfo/setUserInfo",
-      "showAddress/showAddress",
-      "setAddress/setAddress"
-    ]
-  }],
+  "subPackages": [
+    {
+      "root": "packageMy",
+      "name": "my",
+      "pages": [
+        "setUserInfo/setUserInfo",
+        "showAddress/showAddress",
+        "setAddress/setAddress"
+      ]
+    }
+  ],
   "resolveAlias": {
     "@/*": "/*"
   },
+  "requiredPrivateInfos": [
+    "chooseLocation"
+  ],
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
 }

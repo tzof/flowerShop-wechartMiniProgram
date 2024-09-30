@@ -2,6 +2,6 @@
 <view class="showAddress">
   <addressCard />
   <view class="add">
-    <van-button size="large" round>新增地址</van-button>
+    <van-button size="large" round bind:tap="onTapAddAddress">新增地址</van-button>
   </view>
 </view>

@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "packageMy/setAddress/setAddress",
+          "pathName": "packageMy/setAddress/setAddress",
+          "query": "addressId=5",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "packageMy/showAddress/showAddress",
           "pathName": "packageMy/showAddress/showAddress",
           "query": "",

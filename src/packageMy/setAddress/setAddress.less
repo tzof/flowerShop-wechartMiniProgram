@@ -1,1 +1,65 @@
 /* packageMy/setAddress/setAddress.wxss */
+.setAddress {
+  padding: 16rpx;
+
+  .form {
+    .content {
+      background-color: #fff;
+      border-radius: 20rpx;
+      padding: 0 16rpx;
+
+      &>view {
+        display: flex;
+        align-items: center;
+        height: 100rpx;
+
+        &:last-of-type {
+          justify-content: space-between;
+        }
+
+        text {
+          width: 30%;
+        }
+
+        input,
+        .picker {
+          flex-grow: 1;
+        }
+
+        .picker {
+          .regionShow {
+            text {
+              margin-right: 20rpx;
+            }
+          }
+
+          .placeholder {
+            text {
+              color: #969799;
+              white-space: nowrap;
+            }
+          }
+
+        }
+
+        .location {
+          color: #969799;
+          font-size: 24rpx;
+
+          text {
+            margin-left: 10rpx;
+          }
+        }
+
+      }
+    }
+
+    button {
+      margin-top: 20rpx;
+      border-radius: 40rpx;
+      background-color: #f3514f;
+      border: none;
+      color: #fff;
+    }
+  }
+}

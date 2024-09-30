@@ -1,2 +1,45 @@
-<!--packageMy/setAddress/setAddress.wxml-->
-<text>packageMy/setAddress/setAddress.wxml</text>
+<view class="setAddress">
+  <form bindsubmit="onTapSave" class="form">
+    <view class="content">
+      <view class="recipients">
+        <text>收件人</text>
+        <input model:value="{{ recipients }}" name="recipients" placeholder-style="color: #969799" placeholder="请输入收件人姓名" />
+      </view>
+      <van-divider custom-style="margin: 0 0" />
+      <view class="phone">
+        <text>手机号码</text>
+        <input model:value="{{ phone }}" name="phone" placeholder-style="color: #969799" placeholder="请输入收件人手机号码" />
+      </view>
+      <van-divider custom-style="margin: 0 0" />
+      <view class="region">
+        <text>所在省市区</text>
+        <picker mode="region" class="picker" name="region" bindchange="bindRegionChange" value="{{region}}">
+          <view wx:if="{{region}}" class="regionShow">
+            <text> {{region[0]}}</text>
+            <text>{{region[1]}}</text>
+            <text>{{region[2]}}</text>
+          </view>
+          <view wx:else="" class="placeholder">
+            <text>请选择所在省市区</text>
+          </view>
+        </picker>
+        <view catch:tap="onTapLocation" class="location">
+          <van-icon name="location" />
+          <text>定位</text>
+        </view>
+      </view>
+      <van-divider custom-style="margin: 0 0" />
+      <view class="full_address">
+        <text>详细地址</text>
+        <input model:value="{{ full_address }}" name="full_address" placeholder-style="color: #969799" placeholder="请输入详细地址" />
+      </view>
+      <van-divider custom-style="margin: 0 0" />
+      <view class="is_default">
+        <text>设置默认地址</text>
+        <switch model:checked="{{is_default}}" name="is_default" color="#f3514f" bindchange="switch2Change" />
+      </view>
+    </view>
+    <button form-type="submit">{{isUpdate ? '保存修改' : '新增'}}</button>
+  </form>
+
+</view>
