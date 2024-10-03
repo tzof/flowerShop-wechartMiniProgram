@@ -14,6 +14,9 @@
       <text>原料：{{info.material}}</text>
       <text>包装：{{info.packing}}</text>
     </view>
+    <view class="stock">
+      <text>库存：{{info.stock}}</text>
+    </view>
   </view>
   <view class="img-info">
     <image src="{{info.url}}" mode="" />

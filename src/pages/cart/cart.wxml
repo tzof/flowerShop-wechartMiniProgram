@@ -27,6 +27,7 @@
       <text>删除</text>
     </view>
   </van-swipe-cell>
+  <text class="tip">我到底啦</text>
   <view class="checkout">
     <view class="checkout-left">
       <view class="checkbox-checkbox">
