@@ -1,0 +1,6 @@
+<!--packageOrders/ordersAdd/ordersAdd.wxml-->
+<view class="ordersAdd">
+  <addressM />
+  <info goodsId="{{goodsId}}"/>
+  <goodsList goodsId="{{goodsId}}"/>
+</view>

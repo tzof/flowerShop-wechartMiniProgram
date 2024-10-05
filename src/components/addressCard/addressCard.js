@@ -22,6 +22,10 @@ Component({
       type: Number,
       value: 0
     },
+    isOrders: {
+      type: Number,
+      value: 0
+    },
   },
 
   /**
@@ -103,7 +107,7 @@ Component({
         addressid
       } = event.currentTarget.dataset;
       wx.navigateTo({
-        url: `/packageMy/setAddress/setAddress?addressId=${addressid}`,
+        url: `/packageAddress/setAddress/setAddress?addressId=${addressid}`,
         events: {
           idSuccess: (res) => {
             console.log(res);

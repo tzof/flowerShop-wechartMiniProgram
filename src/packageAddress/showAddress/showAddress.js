@@ -9,7 +9,7 @@ Page({
   },
   onTapAddAddress(){
     wx.navigateTo({
-      url: '/packageMy/setAddress/setAddress',
+      url: '/packageAddress/setAddress/setAddress',
     })
   },
   /**

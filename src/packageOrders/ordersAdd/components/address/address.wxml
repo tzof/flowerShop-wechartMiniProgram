@@ -1,0 +1,13 @@
+<!--packageOrders/ordersInfo/components/address/address.wxml-->
+<view class="address">
+  <view class="text" wx:if="{{address}}">
+    <text>{{address.province}} {{address.city}} {{address.county}} {{address.full_address}}</text>
+    <text>{{address.recipients}} {{address.phone}}</text>
+  </view>
+  <view class="no" wx:else="">
+    <van-empty description="暂无默认地址，点击右侧选择地址" custom-class="custom-class" />
+  </view>
+  <view class="arrow" bind:tap="onTapChangeAddress">
+    <van-icon name="arrow" />
+  </view>
+</view>

@@ -34,7 +34,7 @@ Component({
   methods: {
     onTapAddressSetting(){
       wx.navigateTo({
-        url: '/packageMy/showAddress/showAddress',
+        url: '/packageAddress/showAddress/showAddress',
       })
     },
   }

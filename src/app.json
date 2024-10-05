@@ -68,7 +68,13 @@
       "root": "packageMy",
       "name": "my",
       "pages": [
-        "setUserInfo/setUserInfo",
+        "setUserInfo/setUserInfo"
+      ]
+    },
+    {
+      "root": "packageAddress",
+      "name": "address",
+      "pages": [
         "showAddress/showAddress",
         "setAddress/setAddress"
       ]
@@ -79,6 +85,13 @@
       "pages": [
         "goodsInfo/goodsInfo",
         "goodsList/goodsList"
+      ]
+    },
+    {
+      "root": "packageOrders",
+      "name": "orders",
+      "pages": [
+        "ordersAdd/ordersAdd"
       ]
     }
   ],
