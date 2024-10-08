@@ -74,8 +74,8 @@ Page({
   onLoad(options) {
     let { status } = options;
     let NavigationBarTitle = "";
-    status = Number(status);
-    switch (status) {
+    const statusFromMy = status ? Number(status) : "0";
+    switch (statusFromMy) {
       case 2:
         NavigationBarTitle = "待付款";
         break;
