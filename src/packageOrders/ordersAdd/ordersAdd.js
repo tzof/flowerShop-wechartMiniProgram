@@ -71,7 +71,7 @@ Page({
             title: "下单成功",
             duration: 500,
             success: () => {
-              // wx.navigateBack();
+              wx.navigateBack();
             },
           });
         });

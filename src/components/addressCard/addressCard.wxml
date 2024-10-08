@@ -31,4 +31,6 @@
     <!-- <van-divider custom-style="margin: 20rpx 0" /> -->
   </view>
 </view>
-<van-empty description="{{isDefault ? '暂无默认地址' : '暂无数据'}}" wx:else="" />
+<view class="noData" wx:else="">
+  <van-empty description="{{isDefault ? '暂无默认地址' : '暂无数据'}}" custom-class="custom-class" />
+</view>

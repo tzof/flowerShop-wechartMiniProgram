@@ -1,0 +1,48 @@
+<!--packageOrders/ordersInfo/ordersInfo.wxml-->
+<view class="ordersInfo">
+  <view class="ordersInfo">
+    <view class="orders_number">
+      <text>订单编号</text>
+      <text>{{info.orders_number}}</text>
+    </view>
+    <van-divider custom-style="margin: 0 0" />
+    <view class="totalPrice">
+      <text>实付</text>
+      <text class="price">￥{{info.totalPrice}}</text>
+    </view>
+    <van-divider custom-style="margin: 0 0" />
+    <view class="createTime">
+      <text>创建时间</text>
+      <text>{{info.createTime}}</text>
+    </view>
+  </view>
+  <van-steps steps="{{ steps }}" active="{{ info.orders_status }}" direction="vertical" custom-class="van-steps" />
+  <view class="address">
+    <view class="text">
+      <text>{{info.province}} {{info.city}} {{info.county}} {{info.full_address}}</text>
+      <text>{{info.recipients}} {{info.phone}}</text>
+    </view>
+  </view>
+  <view class="info">
+    <view class="orders_name">
+      <text>订购人姓名：</text>
+      <text>{{info.orders_name}}</text>
+    </view>
+    <van-divider custom-style="margin: 0 0" />
+    <view class="orders_phone">
+      <text>订购人手机号：</text>
+      <text>{{info.orders_phone}}</text>
+    </view>
+    <van-divider custom-style="margin: 0 0" />
+    <view class="deliveryTime">
+      <text>期望送达时间：</text>
+      <text>{{info.deliveryTime}}</text>
+    </view>
+    <van-divider custom-style="margin: 0 0" />
+    <view class="orders_notes">
+      <text>订单备注：</text>
+      <view>{{info.orders_notes}}</view>
+    </view>
+  </view>
+  <goodsList goodsList="{{goodsList}}" wx:if="{{goodsList}}"/>
+</view>

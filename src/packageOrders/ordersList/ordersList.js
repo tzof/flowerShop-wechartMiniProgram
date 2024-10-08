@@ -62,6 +62,12 @@ Page({
       }
     });
   },
+  onTapOrderDetail(event) {
+    const ordersId = event.currentTarget.dataset.ordersid;
+    wx.navigateTo({
+      url: '/packageOrders/ordersInfo/ordersInfo?ordersId=' + ordersId,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

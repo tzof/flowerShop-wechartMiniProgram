@@ -8,7 +8,12 @@ Component({
   properties: {
     goodsId: {
       type: String,
-      value: [],
+      value: null,
+    },
+
+    goodsList: {
+      type: Array,
+      value: null,
     },
   },
 
@@ -37,19 +42,31 @@ Component({
     },
     getFromCartDetail() {
       getShoppingCart().then((res) => {
-        const selectCart = res.data.filter(item => item.isSelect)
+        const selectCart = res.data.filter((item) => item.isSelect);
         const goodsInfo = selectCart.map((item) => {
           item.goodsInfo.count = item.count;
           return item.goodsInfo;
         });
-        const totalPrice = goodsInfo.reduce((sum, item) => {
-          return sum + item.count * item.discounted_price;
-        }, 0).toFixed(2);
+        const totalPrice = goodsInfo
+          .reduce((sum, item) => {
+            return sum + item.count * item.discounted_price;
+          }, 0)
+          .toFixed(2);
         this.setData({
           list: goodsInfo,
           totalPrice,
         });
         this.triggerEvent("totalPrice", this.data.totalPrice);
+      });
+    },
+    getFromOrdersDetail() {
+      console.log(this.data.goodsList);
+      const goodsInfo = this.data.goodsList.map((item) => {
+        item.goodsInfo.count = item.count;
+        return item.goodsInfo;
+      });
+      this.setData({
+        list: goodsInfo,
       });
     },
     onTapGoods(event) {
@@ -65,6 +82,8 @@ Component({
     ready() {
       if (this.data.goodsId) {
         this.getFromGoodsDetail();
+      } else if (this.data.goodsList) {
+        this.getFromOrdersDetail();
       } else {
         this.getFromCartDetail();
       }

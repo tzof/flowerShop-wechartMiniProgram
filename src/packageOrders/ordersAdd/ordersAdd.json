@@ -2,6 +2,6 @@
   "usingComponents": {
     "addressM": "./components/address/address",
     "info": "./components/info/info",
-    "goodsList": "./components/goodsList/goodsList"
+    "goodsList": "../components/goodsList/goodsList"
   }
 }
