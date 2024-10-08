@@ -28,6 +28,7 @@
     </view>
   </van-swipe-cell>
   <text class="tip" wx:if="{{list.length > 0}}">我到底啦</text>
+  <van-empty description="{{'暂无数据'}}" wx:else="" />
   <view class="checkout">
     <view class="checkout-left">
       <view class="checkbox-checkbox">

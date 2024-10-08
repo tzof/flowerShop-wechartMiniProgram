@@ -17,7 +17,7 @@ Component({
     onTapOrderStatus(event) {
       const { status } = event.currentTarget.dataset;
       wx.navigateTo({
-        url: '/packageOrders/ordersList/ordersList' + status ? `?status=${status}` : '',
+        url: '/packageOrders/ordersList/ordersList' + (status ? `?status=${status}` : ''),
       })
     },
   },

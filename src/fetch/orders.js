@@ -7,7 +7,7 @@ export const addOrders = (params) => {
 };
 
 export const getOrders = (params) => {
-  return axiosWx('POST', '/getOrders', params);
+  return axiosWx('GET', '/getOrders', params);
 };
 
 export const getOrdersDetail = (params) => {

@@ -1,16 +1,8 @@
-import {
-  createStoreBindings
-} from 'mobx-miniprogram-bindings'
-import shoppingCartStore from '@/stores/shoppingCart'
-import {
-  getGoods,
-} from '@/fetch/goods'
-import {
-  setShoppingCart,
-  getShoppingCartTotal
-} from '@/fetch/shoppingCart'
+import { createStoreBindings } from "mobx-miniprogram-bindings";
+import shoppingCartStore from "@/stores/shoppingCart";
+import { getGoods } from "@/fetch/goods";
+import { setShoppingCart, getShoppingCartTotal } from "@/fetch/shoppingCart";
 Component({
-
   /**
    * 组件的属性列表
    */
@@ -19,110 +11,111 @@ Component({
       type: String,
       value: null,
     },
-    isReachBottom: { // 全写
+    isReachBottom: {
+      // 全写
       type: Boolean, // 类型
       value: false, // 默认值
       observer: function (newVal, oldVal) {
         // 可选：当属性值变化时触发的观察者函数
         // console.log('isChecked changed from', oldVal, 'to', newVal);
-        this.pageGoodsData()
-      }
-    }
+        this.pageGoodsData();
+      },
+    },
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    timer: null,
+    timer: false,
     isEnd: false,
     pageNum: 1,
     pageSize: 10,
     list: [],
     storeBindings: {},
   },
-  observers: {
-
-  },
+  observers: {},
   /**
    * 组件的方法列表
    */
   methods: {
     getGoodsData() {
       getGoods({
-        category_ids: this.data.category_ids
-      }).then(res => {
+        category_ids: this.data.category_ids,
+      }).then((res) => {
         console.log(res);
         this.setData({
-          list: res.data
-        })
-      })
+          list: res.data,
+        });
+        if (res.total <= this.data.list.length) {
+          this.setData({
+            timer: true,
+            isEnd: true
+          });
+        }
+      });
     },
     pageGoodsData() {
       // 加个节流预防频繁翻页和翻页大于总数的问题
       if (this.data.timer) {
-        return
+        return;
       }
       this.setData({
         pageNum: this.data.pageNum + 1,
-        timer: true
-      })
+        timer: true,
+      });
       const pageNum = this.data.pageNum;
       const pageSize = this.data.pageSize;
       getGoods({
         pageNum,
         pageSize,
-        category_ids: this.data.category_ids
-      }).then(res => {
+        category_ids: this.data.category_ids,
+      }).then((res) => {
         this.setData({
-          list: [...this.data.list, ...res.data]
-        })
+          list: [...this.data.list, ...res.data],
+        });
         this.triggerEvent("isPage", false);
         if (res.total > this.data.list.length) {
           this.setData({
             timer: false,
-          })
+          });
         } else {
           this.setData({
-            isEnd: true
-          })
+            isEnd: true,
+          });
         }
-      })
+      });
     },
     onTapShoppingCart(event) {
-      const {
-        item
-      } = event.currentTarget.dataset;
+      const { item } = event.currentTarget.dataset;
       const params = {
         goodsId: item.goodsId,
-      }
-      setShoppingCart(params).then(res => {
+      };
+      setShoppingCart(params).then((res) => {
         console.log(res);
-        getShoppingCartTotal().then(res => {
+        getShoppingCartTotal().then((res) => {
           console.log(res);
-          const {
-            total
-          } = res.data;
-          this.setTotal(total)
+          const { total } = res.data;
+          this.setTotal(total);
           wx.showToast({
-            title: '增加购物车成功',
-            duration: 500
-          })
-        })
-      })
+            title: "增加购物车成功",
+            duration: 500,
+          });
+        });
+      });
     },
     onTapGoods(event) {
       const goodsId = event.currentTarget.dataset.goodsid;
       wx.navigateTo({
-        url: '/packageGoods/goodsInfo/goodsInfo?goodsId=' + goodsId,
-      })
+        url: "/packageGoods/goodsInfo/goodsInfo?goodsId=" + goodsId,
+      });
     },
   },
   lifetimes: {
     created() {
       this.data.storeBindings = createStoreBindings(this, {
         store: shoppingCartStore,
-        actions: ['setTotal'],
+        actions: ["setTotal"],
       });
     },
     ready() {
@@ -130,6 +123,6 @@ Component({
     },
     detached() {
       this.data.storeBindings.destroyStoreBindings();
-    }
+    },
   },
-})
+});

@@ -1,2 +1,32 @@
 <!--packageOrders/ordersList/ordersList.wxml-->
-<text>packageOrders/ordersList/ordersList.wxml</text>
+<view class="ordersList">
+  <view class="ordersCard" wx:for="{{list}}" wx:key="ordersId">
+    <view class="number_status">
+      <view class="number">
+        <text>订单编号：{{item.orders_number}}</text>
+      </view>
+      <view class="status">
+        <text>{{item.status}}</text>
+      </view>
+    </view>
+    <view class="goodsList">
+      <view class="goodsCard" wx:for="{{item.goodsList}}" wx:key="goodsId" wx:for-item="dataItem">
+        <view class="img">
+          <image src="{{dataItem.goodsInfo.url}}" mode="" />
+        </view>
+        <view class="info">
+          <text class="name">{{dataItem.goodsInfo.name}}</text>
+          <text class="floralLanguage">{{dataItem.goodsInfo.floralLanguage}}</text>
+        </view>
+        <view class="pricr_count">
+          <text class="pricr_count-price">￥{{dataItem.goodsInfo.discounted_price}}</text>
+          <text class="count">x{{dataItem.count}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="totalPrice">
+      <text class="label">实付</text>
+      <text class="totalPrice-price">￥{{item.totalPrice}}</text>
+    </view>
+  </view>
+</view>

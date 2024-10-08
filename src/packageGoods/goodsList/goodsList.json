@@ -2,5 +2,6 @@
   "usingComponents": {
     "goodsCard": "/components/goodsCard/goodsCard",
     "float": "/components/float/float"
-  }
+  },
+  "onReachBottomDistance": 10
 }

@@ -1,1 +1,117 @@
 /* packageOrders/ordersList/ordersList.wxss */
+.ordersList {
+  display: flex;
+  flex-direction: column;
+  padding: 16rpx;
+
+  .ordersCard {
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 20rpx;
+
+    &:last-of-type {
+      margin: 0;
+    }
+
+    .number_status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .number {
+        font-size: 28rpx;
+      }
+
+      .status {
+        font-size: 26rpx;
+      }
+    }
+
+    .goodsList {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20rpx;
+
+      .goodsCard {
+        display: flex;
+        margin-top: 10rpx;
+
+        &:last-of-type {
+          margin: 0;
+        }
+
+        .img {
+          width: 200rpx;
+          height: 220rpx;
+
+          image {
+            width: 200rpx;
+            height: 220rpx;
+          }
+        }
+
+        .info {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          margin-left: 10rpx;
+          width: 350rpx;
+          padding: 10rpx 0;
+
+          .name {
+            font-size: 28rpx;
+          }
+
+          .floralLanguage {
+            margin-top: 20rpx;
+            font-size: 22rpx;
+            color: #999999;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+        }
+
+        .pricr_count {
+          width: 120rpx;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          padding: 10rpx 0;
+          margin-left: auto;
+
+          .pricr_count-price {
+            white-space: nowrap;
+            color: #fa4126;
+            font-size: 24rpx;
+          }
+
+          .count {
+            font-size: 24rpx;
+            color: #999;
+            margin-top: 60rpx;
+          }
+        }
+      }
+
+
+    }
+
+    .totalPrice {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .totalPrice-price {
+        margin-left: 5rpx;
+        font-size: 32rpx;
+        color: #fa4126;
+      }
+    }
+  }
+}
