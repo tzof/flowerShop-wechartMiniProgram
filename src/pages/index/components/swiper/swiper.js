@@ -1,15 +1,10 @@
 // pages/index/components/swiper.js
-import {
-  getCarousel,
-} from '@/fetch/home'
+import { getCarousel } from "@/fetch/home";
 Component({
-
   /**
    * 组件的属性列表
    */
-  properties: {
-
-  },
+  properties: {},
 
   /**
    * 组件的初始数据
@@ -23,12 +18,17 @@ Component({
    */
   methods: {
     getCarouselData() {
-      return getCarousel().then(res => {
+      return getCarousel().then((res) => {
         console.log(res);
         this.setData({
-          list: res.data
-        })
-      })
+          list: res.data,
+        });
+      });
+    },
+    onTapSwiper() {
+      wx.navigateTo({
+        url: "/packageGoods/goodsList/goodsList",
+      });
     },
   },
   lifetimes: {
@@ -36,4 +36,4 @@ Component({
       this.getCarouselData();
     },
   },
-})
+});

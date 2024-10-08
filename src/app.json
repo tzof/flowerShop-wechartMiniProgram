@@ -6,7 +6,7 @@
     "pages/my/my"
   ],
   "window": {
-    "navigationBarTitleText": "花城",
+    "navigationBarTitleText": "TZOF花城",
     "navigationBarTextStyle": "white",
     "navigationBarBackgroundColor": "#f3514f",
     "enablePullDownRefresh": false,

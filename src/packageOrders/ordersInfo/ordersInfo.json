@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "订单信息",
   "usingComponents": {
     "goodsList": "../components/goodsList/goodsList"
   }

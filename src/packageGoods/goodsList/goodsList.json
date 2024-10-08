@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "商品列表",
   "usingComponents": {
     "goodsCard": "/components/goodsCard/goodsCard",
     "float": "/components/float/float"

@@ -29,8 +29,8 @@
       <text class="totalPrice-price">￥{{item.totalPrice}}</text>
     </view>
   </view>
-  <view class="loading">
-    <van-loading type="spinner" wx:if="{{!isEnd}}"/>
+  <view class="loading" wx:if="{{list.length > 0}}">
+    <van-loading type="spinner" wx:if="{{!isEnd}}" />
     <text>{{isEnd ? '已经到底啦' : '加载中'}}</text>
   </view>
   <van-empty description="暂无数据" wx:if="{{list.length == 0}}" />

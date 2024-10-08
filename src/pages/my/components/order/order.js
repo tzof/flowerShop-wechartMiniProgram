@@ -12,10 +12,10 @@ Component({
   data: {
     statusList: [
       {
-        label: "代付款",
+        label: "待付款",
         icon: "credit-pay",
         infoTotal: 0,
-        status: 0,
+        status: 2,
       },
       {
         label: "待收货",

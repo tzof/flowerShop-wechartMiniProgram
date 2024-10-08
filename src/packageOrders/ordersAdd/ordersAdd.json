@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "填写订单",
   "usingComponents": {
     "addressM": "./components/address/address",
     "info": "./components/info/info",

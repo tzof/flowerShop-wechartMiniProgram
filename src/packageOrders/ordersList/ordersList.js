@@ -65,14 +65,33 @@ Page({
   onTapOrderDetail(event) {
     const ordersId = event.currentTarget.dataset.ordersid;
     wx.navigateTo({
-      url: '/packageOrders/ordersInfo/ordersInfo?ordersId=' + ordersId,
-    })
+      url: "/packageOrders/ordersInfo/ordersInfo?ordersId=" + ordersId,
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const { status } = options;
+    let { status } = options;
+    let NavigationBarTitle = "";
+    status = Number(status);
+    switch (status) {
+      case 2:
+        NavigationBarTitle = "待付款";
+        break;
+      case 3:
+        NavigationBarTitle = "待发货";
+        break;
+      case 5:
+        NavigationBarTitle = "已完成";
+        break;
+      default:
+        NavigationBarTitle = "全部";
+        break;
+    }
+    wx.setNavigationBarTitle({
+      title: NavigationBarTitle + "订单",
+    });
     this.setData({
       status,
     });
