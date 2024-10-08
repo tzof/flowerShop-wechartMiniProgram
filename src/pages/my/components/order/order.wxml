@@ -1,2 +1,27 @@
 <!--pages/my/components/order/order.wxml-->
-<text>pages/my/components/order/order.wxml</text>
+<view class="order">
+  <view class="my">
+    <text class="label">我的订单</text>
+    <view bind:tap="onTapOrderStatus">
+      <text>查看更多</text>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <van-divider custom-style="margin: 20rpx 0" />
+  <!-- orders_status 订单状态 0.已经创建 1.已支付 2.商家确定 3.已经发货 4.已收货 5.交易完成
+ -->
+  <view class="status">
+    <view class="waitPay" bind:tap="onTapOrderStatus" data-status="0"> 
+      <van-icon class="icon" name="credit-pay" />
+      <text class="label">代付款</text>
+    </view>
+    <view class="waitDeliver" bind:tap="onTapOrderStatus" data-status="2"> 
+      <van-icon class="icon" name="logistics" />
+      <text class="label">待发货</text>
+    </view>
+    <view class="waitComplete" bind:tap="onTapOrderStatus" data-status="5"> 
+      <van-icon class="icon" name="sign" />
+      <text class="label">已完成</text>
+    </view>
+  </view>
+</view>

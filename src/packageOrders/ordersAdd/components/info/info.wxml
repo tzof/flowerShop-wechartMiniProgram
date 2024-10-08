@@ -1,2 +1,25 @@
 <!--packageOrders/ordersAdd/components/info/info.wxml-->
-<text>packageOrders/ordersAdd/components/info/info.wxml</text>
+<view class="info">
+  <view class="orders_name">
+    <text>订购人姓名：</text>
+    <input type="text" placeholder="请输入订购人姓名" model:value="{{orders_name}}" />
+  </view>
+  <van-divider custom-style="margin: 0 0" />
+  <view class="orders_phone">
+    <text>订购人手机号：</text>
+    <input type="text" placeholder="请输入订购人手机号" model:value="{{orders_phone}}" />
+  </view>
+  <van-divider custom-style="margin: 0 0" />
+  <view class="deliveryTime">
+    <text>期望送达时间：</text>
+    <picker mode="time" model:value="{{deliveryTime}}" bindchange="bindTimeChange">
+      <text class="pickerValue" wx:if="{{deliveryTime}}">{{deliveryTime}}</text>
+      <text class="placeholder" wx:else="">请选择期望送达时间</text>
+    </picker>
+  </view>
+  <van-divider custom-style="margin: 0 0" />
+  <view class="orders_notes">
+    <text>订单备注：</text>
+    <textarea placeholder="写上您的祝福语，给心爱的他（她）送上你的祝福（请勿填写特殊符号或表情符号）"  name="textarea" model:value="{{orders_notes}}" />
+  </view>
+</view>

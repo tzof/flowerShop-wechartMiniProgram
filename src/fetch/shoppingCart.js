@@ -26,3 +26,7 @@ export const setShoppingCartSelect = (params) => {
 export const setShoppingCartAllSelect = (params) => {
   return axiosWx('POST', '/setShoppingCartAllSelect', params);
 };
+
+export const setMinusShoppingCartCount = (params) => {
+  return axiosWx('POST', '/setMinusShoppingCartCount', params);
+};

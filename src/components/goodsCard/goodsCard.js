@@ -95,7 +95,6 @@ Component({
       } = event.currentTarget.dataset;
       const params = {
         goodsId: item.goodsId,
-        count: 1
       }
       setShoppingCart(params).then(res => {
         console.log(res);
@@ -105,6 +104,10 @@ Component({
             total
           } = res.data;
           this.setTotal(total)
+          wx.showToast({
+            title: '增加购物车成功',
+            duration: 500
+          })
         })
       })
     },

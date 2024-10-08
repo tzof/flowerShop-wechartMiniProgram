@@ -1,1 +1,42 @@
 /* packageOrders/ordersAdd/components/goodsList/goodsList.wxss */
+.goodsList{
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  .goods-box{
+    display: flex;
+    align-items: center;
+    height: 138rpx;
+    padding-bottom: 20rpx;
+    &:last-of-type{
+      padding: 0z;
+    }
+    .left{
+      width: 128rpx;
+      height: 100%;
+      image{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .right{
+      height: 100%;
+      flex-grow: 1;
+      margin-left: 20rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      &-top{
+        font-size: 26rpx;
+      }
+      &-bottom{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+}

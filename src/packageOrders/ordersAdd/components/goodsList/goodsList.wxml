@@ -1,2 +1,21 @@
 <!--packageOrders/ordersAdd/components/goodsList/goodsList.wxml-->
-<text>packageOrders/ordersAdd/components/goodsList/goodsList.wxml</text>
+<view class="goodsList">
+  <view class="goods-box" wx:for="{{list}}" wx:key="goodsId">
+    <view class="left" bind:tap="onTapGoods" data-goodsId="{{item.goodsId}}">
+      <image src="{{item.url}}" alt="" />
+    </view>
+    <view class="right">
+      <view class="right-top" bind:tap="onTapGoods" data-goodsId="{{item.goodsId}}">
+        <text>{{item.name}}</text>
+      </view>
+      <view class="right-bottom">
+        <view class="price">
+          <text>￥{{item.discounted_price}}</text>
+        </view>
+        <view class="count">
+          <text>x{{item.count}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

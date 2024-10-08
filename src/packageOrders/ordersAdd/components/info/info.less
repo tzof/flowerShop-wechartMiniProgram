@@ -1,1 +1,51 @@
 /* packageOrders/ordersAdd/components/info/info.wxss */
+.info {
+  margin-top: 20rpx;
+  padding: 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+
+  input {
+    text-align: right;
+  }
+
+  &>view {
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx 0;
+
+    &>text {
+      white-space: nowrap;
+      font-size: 26rpx;
+    }
+
+    input,
+    picker {
+      flex: 1;
+      font-size: 26rpx;
+    }
+  }
+
+  .deliveryTime {
+    text-align: right;
+
+    .placeholder {
+      color: #808080;
+    }
+  }
+
+  .orders_notes {
+    flex-direction: column;
+    justify-content: start;
+
+    textarea {
+      margin-top: 20rpx;
+      width: 100%;
+      background-color: #f7f8fa;
+      border-radius: 12rpx;
+      padding: 20rpx;
+      box-sizing: border-box;
+      font-size: 24rpx;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <!--packageMy/showAddress/showAddress.wxml-->
 <view class="showAddress">
-  <addressCard />
+  <addressCard isOrders="{{isOrders}}" selectAddressId="{{selectAddressId}}" bind:changeAddress="changeAddress"/>
   <view class="add">
     <van-button size="large" round bind:tap="onTapAddAddress">新增地址</van-button>
   </view>

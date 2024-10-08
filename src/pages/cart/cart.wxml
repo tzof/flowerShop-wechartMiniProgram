@@ -27,7 +27,7 @@
       <text>删除</text>
     </view>
   </van-swipe-cell>
-  <text class="tip">我到底啦</text>
+  <text class="tip" wx:if="{{list.length > 0}}">我到底啦</text>
   <view class="checkout">
     <view class="checkout-left">
       <view class="checkbox-checkbox">
@@ -35,11 +35,11 @@
       </view>
       <view class="checkout-price">
         <text class="name">合计:</text>
-        <text class="price">￥{{totalPrices}}</text>
+        <text class="price">￥{{totalPrice}}</text>
       </view>
     </view>
     <view class="checkout-right">
-      <van-button round>去结算</van-button>
+      <van-button round bind:tap="onTapSettleAccounts">去结算</van-button>
     </view>
   </view>
 </view>

@@ -3,7 +3,7 @@ import {
 } from './api'
 
 export const addOrders = (params) => {
-  return axiosWx('GET', '/addOrders', params);
+  return axiosWx('POST', '/addOrders', params);
 };
 
 export const getOrders = (params) => {

@@ -1,21 +1,17 @@
 // packageOrders/ordersInfo/components/address/address.js
-import {
-  getDefaultAddress
-} from '@/fetch/address'
+import { getDefaultAddress, getAddress } from "@/fetch/address";
 Component({
-
   /**
    * 组件的属性列表
    */
-  properties: {
-
-  },
+  properties: {},
 
   /**
    * 组件的初始数据
    */
   data: {
-    address: null
+    address: null,
+    selectAddressId: null,
   },
 
   /**
@@ -23,27 +19,39 @@ Component({
    */
   methods: {
     getDefaultAddressData() {
-      getDefaultAddress().then(res => {
+      getDefaultAddress().then((res) => {
         this.setData({
-          address: res.data
-        })
-        console.log(this.data.address);
-      })
+          address: res.data,
+          selectAddressId: res.data.addressId,
+        });
+      });
     },
-    onTapChangeAddress(){
+    onTapChangeAddress() {
       wx.navigateTo({
-        url: '/pages/',
-      })
-    }
+        url:
+          "/packageAddress/showAddress/showAddress?isOrders=1&selectAddressId=" +
+          this.data.selectAddressId,
+        events: {
+          changeAddressId: (data) => {
+            getAddress({ addressId: data }).then((res) => {
+              this.setData({
+                address: res.data[0],
+                selectAddressId: res.data[0].addressId,
+              });
+            });
+          },
+        },
+      });
+    },
   },
   lifetimes: {
     created() {},
     attached() {
-      this.getDefaultAddressData()
+      this.getDefaultAddressData();
     },
     ready() {
       // console.log(this.data.goodsId);
     },
     detached() {},
   },
-})
+});

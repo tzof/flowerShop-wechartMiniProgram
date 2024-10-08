@@ -1,6 +1,6 @@
 <!--components/addressCard/addressCard.wxml-->
 <view class="addressCard" wx:if="{{list.length > 0}}">
-  <view class="addressCard-box" wx:for="{{list}}" wx:key="addressId">
+  <view class="addressCard-box {{(isOrders && item.change) ? 'ordersChangeAddress' : ''}}" wx:for="{{list}}" wx:key="addressId" bind:tap="onChangeAddress" data-addressId="{{item.addressId}}">
     <view class="recipients-info">
       <text class="recipients">{{item.recipients}}</text>
       <text class="phone">{{item.phone}}</text>

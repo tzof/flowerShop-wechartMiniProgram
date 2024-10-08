@@ -1,6 +1,44 @@
 /* packageOrders/ordersAdd/ordersAdd.wxss */
-.ordersAdd{
+.ordersAdd {
   display: flex;
   flex-direction: column;
   padding: 16rpx;
+  padding-bottom: 140rpx;
+
+  .submit {
+    width: 100%;
+    height: 120rpx;
+    padding: 0 16rpx;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    z-index: 99;
+
+    .price {
+      text {
+        font-size: 50rpx;
+        font-weight: bold;
+        color: #f3514f;
+      }
+    }
+
+    button {
+      margin: 0;
+      height: 80rpx;
+      padding: 0 40rpx;
+      background-color: #f3514f;
+      color: #fff;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 45rpx;
+    }
+  }
 }

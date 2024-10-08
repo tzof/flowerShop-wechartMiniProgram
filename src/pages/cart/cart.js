@@ -18,18 +18,20 @@ Page({
   data: {
     list: [],
     storeBindings: {},
-    totalPrices: 0,
+    totalPrice: 0,
     isAllSelect: false
   },
   getShoppingCartData() {
     getShoppingCart().then(res => {
       console.log(res);
-      const totalPrices = res.data.reduce((sum, item) => sum + item.totalPrices, 0).toFixed(2)
-      const isSelectArr = res.data.filter(item => item.isSelect);
+      const selectCart = res.data.filter(item => item.isSelect);
+      const totalPrice = selectCart.reduce((sum, item) => {
+        return sum + item.totalPrice;
+      }, 0).toFixed(2);
       this.setData({
         list: res.data,
-        totalPrices,
-        isAllSelect: isSelectArr.length == res.data.length ? true : false
+        totalPrice,
+        isAllSelect: selectCart.length == res.data.length ? true : false
       })
     })
   },
@@ -112,6 +114,11 @@ Page({
     const goodsId = event.currentTarget.dataset.goodsid;
     wx.navigateTo({
       url: '/packageGoods/goodsInfo/goodsInfo?goodsId=' + goodsId,
+    })
+  },
+  onTapSettleAccounts(event) {
+    wx.navigateTo({
+      url: '/packageOrders/ordersAdd/ordersAdd'
     })
   },
   /**

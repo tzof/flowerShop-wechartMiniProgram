@@ -1,6 +1,12 @@
 <!--packageOrders/ordersAdd/ordersAdd.wxml-->
 <view class="ordersAdd">
-  <addressM />
-  <info goodsId="{{goodsId}}"/>
-  <goodsList goodsId="{{goodsId}}"/>
+  <addressM id="addressM"/>
+  <info id="info"/>
+  <goodsList id="goodsList" goodsId="{{goodsId}}" bind:totalPrice="setTotalPrice"/>
+  <view class="submit">
+    <view class="price">
+      <text>￥{{totalPrice}}</text>
+    </view>
+    <button bind:tap="onTapSubmitOrders">提交订单</button>
+  </view>
 </view>
