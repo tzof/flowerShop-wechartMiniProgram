@@ -13,3 +13,7 @@ export const getOrders = (params) => {
 export const getOrdersDetail = (params) => {
   return axiosWx('GET', '/getOrdersDetail', params);
 };
+
+export const getOrdersTotal = (params) => {
+  return axiosWx('GET', '/getOrdersTotal', params);
+};
