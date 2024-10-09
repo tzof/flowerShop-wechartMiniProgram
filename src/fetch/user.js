@@ -4,7 +4,7 @@ import {
 } from './api'
 
 export const getUserinfo = (params) => {
-  return axiosWx('POST', '/getUserinfo', params);
+  return axiosWx('GET', '/getUserinfo', params);
 };
 
 export const setUserinfo = (params) => {

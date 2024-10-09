@@ -55,10 +55,8 @@ Component({
   },
   pageLifetimes: {
     show: function () {
-      console.log('页面显示');
       const openId = this.data.openId;
       if (openId && this.data.flag) {
-        console.log('我进入了my里login组件的show');
         this.getUserinfoData();
       }
       this.setData({

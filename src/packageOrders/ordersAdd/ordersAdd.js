@@ -57,34 +57,46 @@ Page({
       goodsList,
       totalPrice,
     };
-    addOrders(params).then((res) => {
-      // 购物车点击结算下单成功后减少购物车商品数量
-      if (!this.data.goodsId) {
-        const changeCartsList = goodsList.map((item) => {
-          return {
-            goodsId: item.goodsId,
-            count: item.count,
-          };
-        });
-        setMinusShoppingCartCount({ changeCartsList }).then((res) => {
+    addOrders(params)
+      .then((res) => {
+        // 购物车点击结算下单成功后减少购物车商品数量
+        if (!this.data.goodsId) {
+          const changeCartsList = goodsList.map((item) => {
+            return {
+              goodsId: item.goodsId,
+              count: item.count,
+            };
+          });
+          setMinusShoppingCartCount({ changeCartsList }).then((res) => {
+            wx.showToast({
+              title: "下单成功",
+              duration: 500,
+              success: () => {
+                setTimeout(() => {
+                  wx.navigateBack();
+                }, 500);
+              },
+            });
+          });
+        } else {
           wx.showToast({
             title: "下单成功",
             duration: 500,
             success: () => {
-              wx.navigateBack();
+              setTimeout(() => {
+                wx.navigateBack();
+              }, 500);
             },
           });
-        });
-      } else {
+        }
+      })
+      .catch((err) => {
+        console.log(err);
         wx.showToast({
-          title: "下单成功",
-          duration: 500,
-          success: () => {
-            wx.navigateBack();
-          },
+          title: "请重新提交订单",
+          icon: "error",
         });
-      }
-    });
+      });
   },
   /**
    * 生命周期函数--监听页面加载
