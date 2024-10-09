@@ -1,6 +1,7 @@
 // 自定义封装axios 请求工具
 import {
-  axiosWx
+  axiosWx,
+  axiosWxJson
 } from './api'
 
 export const getShoppingCartTotal = (params) => {
@@ -28,5 +29,5 @@ export const setShoppingCartAllSelect = (params) => {
 };
 
 export const setMinusShoppingCartCount = (params) => {
-  return axiosWx('POST', '/setMinusShoppingCartCount', params);
+  return axiosWxJson('POST', '/setMinusShoppingCartCount', params);
 };

@@ -1,9 +1,10 @@
 import {
-  axiosWx
+  axiosWx,
+  axiosWxJson
 } from './api'
 
 export const addOrders = (params) => {
-  return axiosWx('POST', '/addOrders', params);
+  return axiosWxJson('POST', '/addOrders', params);
 };
 
 export const getOrders = (params) => {
