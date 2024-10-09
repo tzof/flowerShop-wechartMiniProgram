@@ -63,10 +63,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    console.log('show');
-    this.setData({
-      changeIndex: 0
-    })
+    // this.setData({
+    //   changeIndex: 0
+    // })
   },
 
   /**
