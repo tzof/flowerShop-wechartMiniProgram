@@ -6,7 +6,7 @@ axios.defaults.adapter = mpAdapter;
 // 创建一个axios实例
 const instance = axios.create({
   baseURL: "https://tzof.net:217",
-  timeout: 50000,
+  timeout: 10000,
 });
 
 // 添加请求拦截器

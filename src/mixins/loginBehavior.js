@@ -33,6 +33,9 @@ const behavi = Behavior({
                     title: "登录成功",
                     duration: 500,
                   });
+                  this.setData({
+                    token
+                  })
                   wx.setStorageSync("token", token);
                   wx.setStorageSync("openId", openId);
                   await this.getUserinfoData();
@@ -63,6 +66,7 @@ const behavi = Behavior({
             avatarfileName,
             nickname,
           });
+          console.log(this.data.avatarUrl);
           this.setUserInfo(res.data);
           wx.hideLoading();
         })

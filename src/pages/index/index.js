@@ -23,15 +23,18 @@ Page({
     });
   },
   onShow() {
-    const toekn = wx.getStorageSync("token");
-    if(!toekn){
+    const token = wx.getStorageSync("token");
+    this.setData({
+      token,
+    });
+    if (!token) {
       this.onTapLogin();
     }
   },
   onReady() {
-    if (this.data.userInfo && Object.keys(this.data.userInfo).length === 0) {
-      this.onTapLogin();
-    }
+    // if (this.data.userInfo && Object.keys(this.data.userInfo).length === 0) {
+    //   this.onTapLogin();
+    // }
   },
   onUnload() {
     this.data.storeBindings.destroyStoreBindings();
