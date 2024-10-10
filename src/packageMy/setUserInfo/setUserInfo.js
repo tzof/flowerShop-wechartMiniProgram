@@ -1,68 +1,61 @@
 // packageMy/setUserInfo/setUserInfo.js
-import {
-  createStoreBindings
-} from 'mobx-miniprogram-bindings'
-import userStores from '../../stores/user'
-import {
-  upload
-} from '../../fetch/upload'
-import {
-  setUserinfo
-} from '../../fetch/user'
+import { createStoreBindings } from "mobx-miniprogram-bindings";
+import userStores from "../../stores/user";
+import { upload } from "../../fetch/upload";
+import { setUserinfo } from "../../fetch/user";
 Page({
   onTapAvatarUrl(event) {
     const avatarUrl = event.detail.avatarUrl;
     upload({
-      file: avatarUrl
-    }).then(res => {
+      file: avatarUrl,
+    }).then((res) => {
       console.log(res);
-      const {
-        avatarUrl,
-        fileName
-      } = res;
+      const { avatarUrl, fileName } = res;
       this.setData({
         avatarUrl,
-        avatarfileName: fileName
-      })
-    })
+        avatarfileName: fileName,
+      });
+    });
   },
   onBlurNickname(event) {
     console.log(event);
     const nickname = event.detail.value;
     console.log(nickname);
     this.setData({
-      nickname
-    })
+      nickname,
+    });
   },
-  onTapSetUserInfo() {
-    console.log('按钮被点击');
-    setTimeout(async () => {
-      const {
-        avatarUrl,
-        avatarfileName,
-        nickname,
-      } = this.data
-      let params = {
-        avatarUrl,
-        avatarfileName,
-        nickname,
-      }
-      console.log(params);
-      await setUserinfo(params).then(res => {
+  onTapBlurMask() {
+    // console.log("测网速");
+    setTimeout(() => {
+      this.onTapSetUserInfo();
+    }, 100);
+  },
+  async onTapSetUserInfo() {
+    console.log("按钮被点击");
+    const { avatarUrl, avatarfileName, nickname } = this.data;
+    let params = {
+      avatarUrl,
+      avatarfileName,
+      nickname,
+    };
+    console.log(params);
+    await setUserinfo(params)
+      .then((res) => {
         console.log(res);
         wx.showLoading({
-          title: '保存中',
-        })
+          title: "保存中",
+        });
         wx.showToast({
-          title: '保存成功',
-          duration: 500
-        })
-        wx.navigateBack()
-      }).catch(err => {
-        console.log(err);
-        wx.hideLoading()
+          title: "保存成功",
+          duration: 500,
+        });
+        wx.navigateBack();
       })
-    }, 100);
+      .catch((err) => {
+        console.log(err);
+        wx.hideLoading();
+      });
   },
   /**
    * 页面的初始数据
@@ -70,7 +63,7 @@ Page({
   data: {
     avatarUrl: null,
     avatarfileName: null,
-    nickname: '123121',
+    nickname: "默认昵称",
     storeBindings: {},
   },
 
@@ -80,7 +73,7 @@ Page({
   onLoad(options) {
     this.data.storeBindings = createStoreBindings(this, {
       store: userStores,
-      fields: ['userInfo'],
+      fields: ["userInfo"],
     });
   },
 
@@ -91,24 +84,19 @@ Page({
     this.setData({
       nickname: this.data.userInfo.nickname,
       avatarUrl: this.data.userInfo.avatarUrl,
-      avatarfileName: this.data.userInfo.avatarfileName
-    })
+      avatarfileName: this.data.userInfo.avatarfileName,
+    });
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
-
-
-  },
+  onShow() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
-
-  },
+  onHide() {},
 
   /**
    * 生命周期函数--监听页面卸载
@@ -120,21 +108,15 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
-
-  },
+  onPullDownRefresh() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
-
-  },
+  onReachBottom() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-
-  }
-})
+  onShareAppMessage() {},
+});

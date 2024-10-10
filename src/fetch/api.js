@@ -31,7 +31,6 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   function (response) {
     // 对响应数据做点什么
-    console.log(response);
     return response;
   },
   function (error) {
@@ -80,7 +79,7 @@ export function ajaxRequest(method, url, params, formatType) {
             duration: 950,
           });
           setTimeout(() => {
-            wx.switchTab({
+            wx.reLauch({
               url: "/pages/index/index",
             });
           }, 1000);

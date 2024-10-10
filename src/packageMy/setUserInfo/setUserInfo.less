@@ -6,34 +6,42 @@ page {
   align-items: center;
   padding: 20rpx;
   box-sizing: border-box;
+
   van-cell {
     width: 100%;
+
     .custom-class {
       border-radius: 20rpx;
       margin-bottom: 20rpx;
     }
+
     .titleClass {
       display: flex;
       align-items: center;
       white-space: nowrap;
+
       .van-cell-text {
         margin-right: 40rpx;
         font-weight: bold;
         font-size: 28rpx;
       }
+
       van-field {
         flex-grow: 1;
+
         input {
           width: 200%;
         }
       }
     }
+
     .nicknameCell .titleClass {
       .van-cell {
         padding-left: 0 !important;
         padding-right: 0 !important;
       }
     }
+
     .avatar {
       position: absolute;
       top: 0;
@@ -42,6 +50,7 @@ page {
       height: 100%;
       background-color: #ff0000;
       opacity: 0 !important;
+
       button {
         width: 100%;
         height: 100%;
@@ -49,11 +58,14 @@ page {
     }
   }
 }
+
 .saveBtn {
   width: 90%;
+
   button {
     display: flex;
     align-items: center;
     background-color: #f3514f;
+    border: none;
   }
 }

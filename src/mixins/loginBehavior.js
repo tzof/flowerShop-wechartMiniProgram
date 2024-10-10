@@ -47,7 +47,7 @@ const behavi = Behavior({
           },
           fail(err) {
             console.log(err);
-            reject();
+            reject(err);
             this.clear();
           },
         });
