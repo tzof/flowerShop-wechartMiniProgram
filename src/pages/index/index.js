@@ -38,6 +38,8 @@ Page({
   },
   onUnload() {
     this.data.storeBindings.destroyStoreBindings();
+    wx.removeStorageSync("token");
+    wx.removeStorageSync("openId");
   },
   // 上拉触底
   // app.json或page.json中通过onReachBottomDistance配置触发距离，默认50(px)

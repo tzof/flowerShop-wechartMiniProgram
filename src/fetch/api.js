@@ -79,7 +79,7 @@ export function ajaxRequest(method, url, params, formatType) {
             duration: 950,
           });
           setTimeout(() => {
-            wx.reLauch({
+            wx.reLaunch({
               url: "/pages/index/index",
             });
           }, 1000);

@@ -42,9 +42,7 @@ Component({
       })
     },
     async attached() {
-      if (this.data.userInfo && Object.keys(this.data.userInfo).length === 0) {
-        await this.onTapLogin();
-      }
+
     },
     ready() {
 
