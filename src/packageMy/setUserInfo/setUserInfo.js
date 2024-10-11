@@ -26,13 +26,11 @@ Page({
     });
   },
   onTapBlurMask() {
-    // console.log("测网速");
     setTimeout(() => {
       this.onTapSetUserInfo();
     }, 100);
   },
   async onTapSetUserInfo() {
-    console.log("按钮被点击");
     const { avatarUrl, avatarfileName, nickname } = this.data;
     let params = {
       avatarUrl,

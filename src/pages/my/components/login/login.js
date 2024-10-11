@@ -1,5 +1,6 @@
 import { createStoreBindings } from "mobx-miniprogram-bindings";
 import userStore from "@/stores/user";
+import { getUserinfo } from "@/fetch/user";
 Component({
   /**
    * 组件的属性列表
@@ -12,6 +13,7 @@ Component({
   data: {
     storeBindings: {},
     token: null,
+    flag: false, // 是否需要重新获取用户信息 从设置用户信息返回后需要
   },
 
   /**
@@ -24,9 +26,24 @@ Component({
       });
     },
     onTapSettingUserInfo() {
+      this.setData({
+        flag: true,
+      });
       wx.navigateTo({
         url: "/packageMy/setUserInfo/setUserInfo",
       });
+    },
+    getUserinfoData() {
+      getUserinfo()
+        .then((res) => {
+          this.setUserInfo(res.data);
+          this.setData({
+            flag: false,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   lifetimes: {
@@ -34,6 +51,7 @@ Component({
       this.data.storeBindings = createStoreBindings(this, {
         store: userStore,
         fields: ["userInfo"],
+        actions: ["setUserInfo"],
       });
     },
     attached() {},
@@ -48,6 +66,9 @@ Component({
       this.setData({
         token,
       });
+      if (this.data.flag) {
+        this.getUserinfoData();
+      }
     },
   },
 });
