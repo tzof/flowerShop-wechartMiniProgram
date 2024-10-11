@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "packageGoods/goodsList/goodsList",
+          "pathName": "packageGoods/goodsList/goodsList",
+          "query": "category_id=205",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "packageMy/setAddress/setAddress",
           "pathName": "packageMy/setAddress/setAddress",
           "query": "addressId=5",
@@ -45,5 +52,5 @@
       ]
     }
   },
-  "libVersion": "3.4.10"
+  "libVersion": "3.6.0"
 }

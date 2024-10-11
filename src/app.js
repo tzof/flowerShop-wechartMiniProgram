@@ -2,5 +2,7 @@
 App({
   onLaunch() {
     // wx.clearStorageSync()
-  }
-})
+    wx.removeStorageSync("token");
+    wx.removeStorageSync("openId");
+  },
+});

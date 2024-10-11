@@ -2,7 +2,7 @@ import {
   observable,
   action
 } from 'mobx-miniprogram'
-const numstore = observable({
+const userStore = observable({
   token: null,
   openId: null,
   userInfo: {},
@@ -22,4 +22,4 @@ const numstore = observable({
   })
 })
 
-export default numstore
+export default userStore

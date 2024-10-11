@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view wx:if="{{token}}" class="index">
+<view class="index">
   <view class="bg"></view>
   <swiperC />
   <navC />

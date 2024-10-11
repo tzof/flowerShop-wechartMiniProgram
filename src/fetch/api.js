@@ -40,32 +40,32 @@ instance.interceptors.response.use(
   }
 );
 export function ajaxRequest(method, url, params, formatType) {
-  // method 请求方式
-  // url 请求地址
-  let axiosParams = {
-    method,
-    url,
-  };
-  // params 是GET、DELETE请求的时候用的请求参数 会变成字符串拼接到路由上 /users?page=1&limit=10
-  if (method === "GET" || method === "DELETE") {
-    axiosParams.params = params;
-  }
-  // data 是POST、PUT、PATCH请求的时候用的请求体 会变成键值对模式 {"username":"tzof","age":"18"}
-  // headers 请求头信息如Content-Type、Authorization等。
-  else {
-    axiosParams.data = params;
-    if (formatType == "urlencoded") {
-      axiosParams.headers = {
-        "Content-Type": "application/x-www-form-urlencoded",
-      };
-    } else if (formatType == "json") {
-      axiosParams.headers = {
-        "Content-Type": "application/json",
-      };
-    }
-  }
   // 返回一个promise对象 引用的地方可以使用.then或者await获取res数据
   return new Promise((resolve, reject) => {
+    // method 请求方式
+    // url 请求地址
+    let axiosParams = {
+      method,
+      url,
+    };
+    // params 是GET、DELETE请求的时候用的请求参数 会变成字符串拼接到路由上 /users?page=1&limit=10
+    if (method === "GET" || method === "DELETE") {
+      axiosParams.params = params;
+    }
+    // data 是POST、PUT、PATCH请求的时候用的请求体 会变成键值对模式 {"username":"tzof","age":"18"}
+    // headers 请求头信息如Content-Type、Authorization等。
+    else {
+      axiosParams.data = params;
+      if (formatType == "urlencoded") {
+        axiosParams.headers = {
+          "Content-Type": "application/x-www-form-urlencoded",
+        };
+      } else if (formatType == "json") {
+        axiosParams.headers = {
+          "Content-Type": "application/json",
+        };
+      }
+    }
     // instance.request发送请求，不加request也可以，也可以直接用创建的axios实例对象发送
     instance(axiosParams)
       .then((res) => {
@@ -79,9 +79,9 @@ export function ajaxRequest(method, url, params, formatType) {
             duration: 950,
           });
           setTimeout(() => {
-            wx.reLaunch({
-              url: "/pages/index/index",
-            });
+            // wx.navigateTo({
+            //   url: "/pages/login/login?isNotTokenToLogin=true",
+            // });
           }, 1000);
         }
         resolve(res.data);

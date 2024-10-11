@@ -19,12 +19,12 @@ Component({
    */
   data: {
     defaultAddress: {
-      recipients: '养老',
-      phone: '17682426910',
-      province: '浙江省',
-      city: '杭州市',
-      county: '萧山区',
-      full_address: '大栅栏看能否肯定是你考拉放大收纳拉卡萨放大你那啥打法吗，索尼大法，吗'
+      recipients: '',
+      phone: '',
+      province: '',
+      city: '',
+      county: '',
+      full_address: '',
     },
   },
 

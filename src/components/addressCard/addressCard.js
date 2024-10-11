@@ -55,9 +55,12 @@ Component({
     },
     getAddressData() {
       getAddress().then((res) => {
-        console.log(res,this.data.selectAddressId);
+        console.log(res, this.data.selectAddressId);
         res.data.forEach((item) => {
-          if (this.data.isOrders && item.addressId == this.data.selectAddressId) {
+          if (
+            this.data.isOrders &&
+            item.addressId == this.data.selectAddressId
+          ) {
             item.change = true;
           }
         });
@@ -142,16 +145,10 @@ Component({
       });
     },
   },
-  lifetimes: {
+  lifeitmes: {
     created() {},
     attached() {},
-    ready() {
-      if (this.data.isDefault) {
-        this.getDefaultAddressData();
-      } else {
-        this.getAddressData();
-      }
-    },
+    ready() {},
     detached() {},
   },
   pageLifetimes: {

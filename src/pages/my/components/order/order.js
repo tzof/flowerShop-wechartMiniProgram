@@ -60,11 +60,7 @@ Component({
   lifetimes: {
     created() {},
     attached() {},
-    ready() {
-      this.getOrdersTotalData(0);
-      this.getOrdersTotalData(3);
-      this.getOrdersTotalData(5);
-    },
+    ready() {},
   },
   pageLifetimes: {
     show() {

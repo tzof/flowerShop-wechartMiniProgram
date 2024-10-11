@@ -1,25 +1,19 @@
 // pages/index/components/float/float.js
-import {
-  createStoreBindings
-} from 'mobx-miniprogram-bindings'
-import shoppingCartStore from '@/stores/shoppingCart'
-import {
-  getShoppingCartTotal
-} from '@/fetch/shoppingCart'
+import { createStoreBindings } from "mobx-miniprogram-bindings";
+import shoppingCartStore from "@/stores/shoppingCart";
+import { getShoppingCartTotal } from "@/fetch/shoppingCart";
 Component({
-
   /**
    * 组件的属性列表
    */
-  properties: {
-
-  },
+  properties: {},
 
   /**
    * 组件的初始数据
    */
   data: {
     storeBindings: {},
+    first: true,
   },
 
   /**
@@ -27,25 +21,23 @@ Component({
    */
   methods: {
     getShoppingCartTotalData() {
-      getShoppingCartTotal().then(res => {
-        const {
-          total
-        } = res.data;
-        this.setTotal(total)
-      })
+      getShoppingCartTotal().then((res) => {
+        const { total } = res.data;
+        this.setTotal(total);
+      });
     },
     onTapFloatShoppingCart() {
       wx.switchTab({
-        url: '/pages/cart/cart',
-      })
+        url: "/pages/cart/cart",
+      });
     },
   },
   lifetimes: {
     created() {
       this.data.storeBindings = createStoreBindings(this, {
         store: shoppingCartStore,
-        fields: ['total'],
-        actions: ['setTotal'],
+        fields: ["total"],
+        actions: ["setTotal"],
       });
     },
     attached() {},
@@ -57,8 +49,8 @@ Component({
     },
   },
   pageLifetimes: {
-    show(){
+    show() {
       this.getShoppingCartTotalData();
     },
   },
-})
+});

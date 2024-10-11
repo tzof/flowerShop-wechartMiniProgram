@@ -1,65 +1,53 @@
-import loginBehavi from '@/mixins/loginBehavior'
-import {
-  createStoreBindings
-} from 'mobx-miniprogram-bindings'
-import userStores from '@/stores/user'
+import { createStoreBindings } from "mobx-miniprogram-bindings";
+import userStore from "@/stores/user";
 Component({
-  behaviors: [loginBehavi],
   /**
    * 组件的属性列表
    */
-  properties: {
-
-  },
+  properties: {},
 
   /**
    * 组件的初始数据
    */
   data: {
-    flag: false,
     storeBindings: {},
+    token: null,
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    onTapLogin() {
+      wx.navigateTo({
+        url: "/pages/login/login?isNotTokenToLogin=true",
+      });
+    },
     onTapSettingUserInfo() {
       wx.navigateTo({
-        url: '/packageMy/setUserInfo/setUserInfo',
-      })
-      this.setData({
-        flag: true
-      })
+        url: "/packageMy/setUserInfo/setUserInfo",
+      });
     },
   },
   lifetimes: {
-    async created() {
-      this.data.storeBindings = await createStoreBindings(this, {
-        store: userStores,
-        fields: ['openId', 'userInfo'],
-        actions: ['setToken', 'setOpenId', 'setUserInfo', 'clearUser'],
-      })
+    created() {
+      this.data.storeBindings = createStoreBindings(this, {
+        store: userStore,
+        fields: ["userInfo"],
+      });
     },
-    async attached() {
-
-    },
-    ready() {
-
-    },
+    attached() {},
+    ready() {},
     detached() {
       this.data.storeBindings.destroyStoreBindings();
-    }
-  },
-  pageLifetimes: {
-    show: function () {
-      const openId = this.data.openId;
-      if (openId && this.data.flag) {
-        this.getUserinfoData();
-      }
-      this.setData({
-        flag: false
-      })
     },
   },
-})
+  pageLifetimes: {
+    show() {
+      const token = wx.getStorageSync("token");
+      this.setData({
+        token,
+      });
+    },
+  },
+});

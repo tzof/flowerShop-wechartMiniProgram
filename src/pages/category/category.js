@@ -72,7 +72,6 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-    console.log('hide');
   },
 
   /**
