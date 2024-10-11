@@ -55,7 +55,6 @@ Component({
     },
     getAddressData() {
       getAddress().then((res) => {
-        console.log(res, this.data.selectAddressId);
         res.data.forEach((item) => {
           if (
             this.data.isOrders &&

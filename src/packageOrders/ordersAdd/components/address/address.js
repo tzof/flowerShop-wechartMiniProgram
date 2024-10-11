@@ -49,9 +49,7 @@ Component({
     attached() {
       this.getDefaultAddressData();
     },
-    ready() {
-      // console.log(this.data.goodsId);
-    },
+    ready() {},
     detached() {},
   },
 });

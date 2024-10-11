@@ -41,9 +41,7 @@ Component({
       });
     },
     attached() {},
-    ready() {
-      this.getShoppingCartTotalData();
-    },
+    ready() {},
     detached() {
       this.data.storeBindings.destroyStoreBindings();
     },

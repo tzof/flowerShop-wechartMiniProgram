@@ -80,7 +80,7 @@ export function ajaxRequest(method, url, params, formatType) {
           });
           setTimeout(() => {
             wx.navigateTo({
-              url: "/pages/login/login?isNotTokenToLogin=true",
+              url: "/pages/login/login",
             });
           }, 1000);
         }

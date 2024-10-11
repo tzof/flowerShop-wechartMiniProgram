@@ -1,15 +1,10 @@
 // pages/index/components/activity/activity.js
-import {
-  getActivity,
-} from '@/fetch/home'
+import { getActivity } from "@/fetch/home";
 Component({
-
   /**
    * 组件的属性列表
    */
-  properties: {
-
-  },
+  properties: {},
 
   /**
    * 组件的初始数据
@@ -22,17 +17,17 @@ Component({
    */
   methods: {
     getActivityData() {
-      return getActivity().then(res => {
+      return getActivity().then((res) => {
         console.log(res);
         this.setData({
-          list: res.data
-        })
-      })
+          list: res.data,
+        });
+      });
     },
     onTapActivity() {
       wx.navigateTo({
-        url: '/packageGoods/goodsList/goodsList'
-      })
+        url: "/packageGoods/goodsList/goodsList",
+      });
     },
   },
   lifetimes: {
@@ -40,4 +35,7 @@ Component({
       this.getActivityData();
     },
   },
-})
+  pageLifetimes: {
+    show() {},
+  },
+});

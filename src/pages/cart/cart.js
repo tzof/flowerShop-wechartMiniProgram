@@ -1,185 +1,161 @@
 // pages/cart/cart.js
 import {
-  createStoreBindings
-} from 'mobx-miniprogram-bindings'
-import userStores from '@/stores/user'
-import {
   getShoppingCart,
   setShoppingCart,
   deleteShoppingCart,
   setShoppingCartSelect,
-  setShoppingCartAllSelect
-} from '@/fetch/shoppingCart'
+  setShoppingCartAllSelect,
+} from "@/fetch/shoppingCart";
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     list: [],
-    storeBindings: {},
     totalPrice: 0,
-    isAllSelect: false
+    isAllSelect: false,
   },
   getShoppingCartData() {
-    getShoppingCart().then(res => {
+    getShoppingCart().then((res) => {
       console.log(res);
-      const selectCart = res.data.filter(item => item.isSelect);
-      const totalPrice = selectCart.reduce((sum, item) => {
-        return sum + item.totalPrice;
-      }, 0).toFixed(2);
+      const selectCart = res.data.filter((item) => item.isSelect);
+      const totalPrice = selectCart
+        .reduce((sum, item) => {
+          return sum + item.totalPrice;
+        }, 0)
+        .toFixed(2);
       this.setData({
         list: res.data,
         totalPrice,
-        isAllSelect: selectCart.length == res.data.length ? true : false
-      })
-    })
+        isAllSelect: selectCart.length == res.data.length ? true : false,
+      });
+    });
   },
   onChangeCardCheckbox(event) {
     const isSelect = event.detail;
     const carId = event.currentTarget.dataset.carid;
     const params = {
       carId,
-      isSelect
-    }
-    setShoppingCartSelect(params).then(res => {
+      isSelect,
+    };
+    setShoppingCartSelect(params).then((res) => {
       console.log(res);
       this.getShoppingCartData();
-    })
+    });
   },
   onChangeAllCheckbox(event) {
     const isSelect = event.detail;
     const params = {
       isSelect,
-    }
-    setShoppingCartAllSelect(params).then(res => {
+    };
+    setShoppingCartAllSelect(params).then((res) => {
       console.log(res);
       this.setData({
-        isAllSelect: isSelect
-      })
+        isAllSelect: isSelect,
+      });
       this.getShoppingCartData();
-    })
+    });
   },
   onChangeCount(event) {
     const count = event.detail;
     const goodsId = event.currentTarget.dataset.goodsid;
     const params = {
       goodsId,
-      count
-    }
-    setShoppingCart(params).then(res => {
+      count,
+    };
+    setShoppingCart(params).then((res) => {
       console.log(res);
       this.getShoppingCartData();
       // const dataPath = `list[${changeIndex}]`
       // this.setData({
       //   [dataPath]: changeData
       // })
-    })
+    });
   },
   deleteShoppingCart(carId) {
     wx.showModal({
-      title: '提示',
-      content: '确定删除该商品吗？',
-      confirmColor: 'red',
+      title: "提示",
+      content: "确定删除该商品吗？",
+      confirmColor: "red",
       success: (res) => {
         console.log(res);
         if (res.confirm) {
           const params = {
-            carId
-          }
-          deleteShoppingCart(params).then(res => {
+            carId,
+          };
+          deleteShoppingCart(params).then((res) => {
             console.log(res);
             wx.showToast({
-              title: '删除成功',
-              duration: 500
-            })
+              title: "删除成功",
+              duration: 500,
+            });
             this.getShoppingCartData();
-          })
+          });
         }
       },
       fail: (err) => {
         console.log(err);
       },
-    })
+    });
   },
   onBindDisableMinus(event) {
     const carId = event.currentTarget.dataset.carid;
-    this.deleteShoppingCart(carId)
+    this.deleteShoppingCart(carId);
   },
   onDeleteShoppingCart(event) {
     const carId = event.currentTarget.dataset.carid;
-    this.deleteShoppingCart(carId)
+    this.deleteShoppingCart(carId);
   },
   onTapGoods(event) {
     const goodsId = event.currentTarget.dataset.goodsid;
     wx.navigateTo({
-      url: '/packageGoods/goodsInfo/goodsInfo?goodsId=' + goodsId,
-    })
+      url: "/packageGoods/goodsInfo/goodsInfo?goodsId=" + goodsId,
+    });
   },
   onTapSettleAccounts(event) {
     wx.navigateTo({
-      url: '/packageOrders/ordersAdd/ordersAdd'
-    })
+      url: "/packageOrders/ordersAdd/ordersAdd",
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-    this.data.storeBindings = createStoreBindings(this, {
-      store: userStores,
-      fields: ['openId'],
-    });
-  },
+  onLoad(options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
-    this.getShoppingCartData();
-  },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    const openId = this.data.openId;
-    if (openId) {
-      this.getShoppingCartData();
-    }
+    this.getShoppingCartData();
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
-
-  },
+  onHide() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
-    this.data.storeBindings.destroyStoreBindings();
-  },
+  onUnload() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
-
-  },
+  onPullDownRefresh() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
-
-  },
+  onReachBottom() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-
-  }
-})
+  onShareAppMessage() {},
+});

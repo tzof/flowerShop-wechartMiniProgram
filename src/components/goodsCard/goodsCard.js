@@ -50,7 +50,7 @@ Component({
         if (res.total <= this.data.list.length) {
           this.setData({
             timer: true,
-            isEnd: true
+            isEnd: true,
           });
         }
       });
@@ -124,5 +124,8 @@ Component({
     detached() {
       this.data.storeBindings.destroyStoreBindings();
     },
+  },
+  pageLifetimes: {
+    show() {},
   },
 });

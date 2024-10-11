@@ -1,15 +1,10 @@
 // pages/index/components/nav/nav.js
-import {
-  getCategory,
-} from '@/fetch/category'
+import { getCategory } from "@/fetch/category";
 Component({
-
   /**
    * 组件的属性列表
    */
-  properties: {
-
-  },
+  properties: {},
 
   /**
    * 组件的初始数据
@@ -23,20 +18,18 @@ Component({
    */
   methods: {
     getCategoryData() {
-      getCategory().then(res => {
+      getCategory().then((res) => {
         console.log(res);
         this.setData({
-          list: res.data
-        })
-      })
+          list: res.data,
+        });
+      });
     },
     onTapCategory(event) {
-      const {
-        category_id
-      } = event.currentTarget.dataset
+      const { category_id } = event.currentTarget.dataset;
       wx.navigateTo({
-        url: '/packageGoods/goodsList/goodsList?category_id=' + category_id,
-      })
+        url: "/packageGoods/goodsList/goodsList?category_id=" + category_id,
+      });
     },
   },
   lifetimes: {
@@ -44,4 +37,7 @@ Component({
       this.getCategoryData();
     },
   },
-})
+  pageLifetimes: {
+    show() {},
+  },
+});

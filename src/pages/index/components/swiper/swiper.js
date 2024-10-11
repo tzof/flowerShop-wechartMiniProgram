@@ -36,4 +36,7 @@ Component({
       this.getCarouselData();
     },
   },
+  pageLifetimes: {
+    show() {},
+  },
 });

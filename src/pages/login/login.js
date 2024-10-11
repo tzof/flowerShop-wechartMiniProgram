@@ -53,14 +53,18 @@ Page({
           duration: 500,
         });
         wx.hideLoading();
-        // 如果时候调用接口时token失效转跳到登录页面则回退页面
-        if (this.data.isNotTokenToLogin) {
-          wx.navigateBack();
-        } else {
-          // 默认进来登录页面则转跳index首页
+        const pagesList = getCurrentPages();
+        const { route } = pagesList[pagesList.length - 1];
+        console.log(pagesList);
+        // 如果只有一个页面栈则表示是新登录 跳入主页
+        if (pagesList.length == 1) {
           wx.switchTab({
             url: "/pages/index/index",
           });
+        }
+        // 有多个页面栈表示从其他页面token失效跳到登录页面 返回上一页
+        else {
+          wx.navigateBack();
         }
       })
       .catch((err) => {
