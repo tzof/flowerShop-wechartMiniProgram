@@ -79,9 +79,9 @@ export function ajaxRequest(method, url, params, formatType) {
             duration: 950,
           });
           setTimeout(() => {
-            // wx.navigateTo({
-            //   url: "/pages/login/login?isNotTokenToLogin=true",
-            // });
+            wx.navigateTo({
+              url: "/pages/login/login?isNotTokenToLogin=true",
+            });
           }, 1000);
         }
         resolve(res.data);
