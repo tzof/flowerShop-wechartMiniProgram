@@ -44,7 +44,7 @@ cd flowerShop-wechartMiniProgram
 
 ### 4. 配置域名白名单
 
-在微信开发者工具中配置相应的服务器域名以允许访问后端服务。需要将后端 API 地址（例如https://tzof.net:217）加入request合法域名列表。
+在微信开发者工具中配置相应的服务器域名以允许访问后端服务。需要将后端 API 地址（例如 https://tzof.net:217 ）加入request合法域名列表。
 
 ### 5. 运行项目
 
